@@ -159,7 +159,6 @@ export default function Appointment() {
 
     return "";
   };
-  // ================ END IMPROVED NAME VALIDATION ================
 
   // ================ EMAIL VALIDATION - ONLY .COM ================
   const validateEmail = (email) => {
