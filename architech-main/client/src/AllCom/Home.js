@@ -110,7 +110,7 @@ export default function Home() {
 
   const styles = {
     page: {
-      fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
+      fontFamily: "open sans ",
       scrollBehavior: "smooth",
       color: "#1e293b",
       overflowX: "hidden",
@@ -139,7 +139,7 @@ export default function Home() {
 
     logo: {
       fontSize: isMobile ? "22px" : "28px",
-      fontWeight: "800",
+      fontWeight: "600",
       color: "#fff",
       letterSpacing: "1px",
       cursor: "pointer",
@@ -270,7 +270,7 @@ export default function Home() {
 
     heroTitle: {
       fontSize: isMobile ? "32px" : isTablet ? "56px" : "clamp(40px, 8vw, 72px)",
-      fontWeight: "800",
+      fontWeight: "600",
       marginBottom: isMobile ? "15px" : "20px",
       lineHeight: "1.2",
       textShadow: "0 4px 20px rgba(0,0,0,0.2)",
@@ -325,7 +325,7 @@ export default function Home() {
       textAlign: "center",
       marginBottom: "15px",
       color: "#0f172a",
-      fontWeight: "700",
+      fontWeight: "600",
       position: "relative",
     },
 
@@ -376,7 +376,7 @@ export default function Home() {
 
     cardTitle: {
       fontSize: isMobile ? "22px" : "24px",
-      fontWeight: "700",
+      fontWeight: "600",
       marginBottom: "12px",
       color: "#0f172a",
     },
@@ -425,7 +425,7 @@ export default function Home() {
     },
     featureTitle: {
       fontSize: isMobile ? '18px' : '20px',
-      fontWeight: '700',
+      fontWeight: '600',
       color: colors.gray[900],
       marginBottom: '12px',
     },
@@ -481,7 +481,7 @@ export default function Home() {
 
     consultationTabTitle: {
       fontSize: isMobile ? "24px" : "28px",
-      fontWeight: "700",
+      fontWeight: "600",
       marginBottom: "20px",
       color: "#0f172a",
       textAlign: "center",
@@ -509,7 +509,7 @@ export default function Home() {
 
     consultationTabCardTitle: {
       fontSize: isMobile ? "18px" : "20px",
-      fontWeight: "700",
+      fontWeight: "600",
       marginBottom: "10px",
       color: "#0e1013",
     },
@@ -553,7 +553,7 @@ export default function Home() {
     },
     consultationTitle: {
       fontSize: isMobile ? '28px' : '36px',
-      fontWeight: '700',
+      fontWeight: '600',
       marginBottom: '16px',
     },
     consultationHighlight: {
@@ -615,7 +615,7 @@ export default function Home() {
       background: "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
-      fontWeight: "800",
+      fontWeight: "600",
       marginBottom: "8px",
       lineHeight: "1",
     },
@@ -623,7 +623,7 @@ export default function Home() {
     achievementLabel: {
       fontSize: isMobile ? "16px" : "18px",
       color: "rgba(255,255,255,0.8)",
-      fontWeight: "500",
+      fontWeight: "600",
     },
 
     /* ---------- PROJECTS (Responsive) ---------- */
@@ -672,7 +672,7 @@ export default function Home() {
     projectTitle: {
       color: "#fff",
       fontSize: isMobile ? "20px" : "24px",
-      fontWeight: "700",
+      fontWeight: "600",
       marginBottom: "4px",
       transform: isMobile ? "translateY(0)" : "translateY(20px)",
       transition: "transform 0.4s ease",
@@ -697,7 +697,7 @@ export default function Home() {
 
     ctaTitle: {
       fontSize: isMobile ? "28px" : isTablet ? "40px" : "clamp(32px, 5vw, 48px)",
-      fontWeight: "700",
+      fontWeight: "600",
       marginBottom: "15px",
     },
 
@@ -736,7 +736,7 @@ export default function Home() {
 
     footerLogo: {
       fontSize: isMobile ? "24px" : "28px",
-      fontWeight: "800",
+      fontWeight: "600",
       marginBottom: "15px",
       background: "linear-gradient(135deg, #fff 0%, #94a3b8 100%)",
       WebkitBackgroundClip: "text",
@@ -1220,7 +1220,6 @@ export default function Home() {
             <Link to="/project" style={styles.footerLink}>Projects</Link>
             <Link to="/contact" style={styles.footerLink}>Contact</Link>
             <Link to="/appointment" style={styles.footerLink}>Appointment</Link>
-                        <Link to="/appointment" style={styles.footerLink}>Appointment</Link>
 
           </div>
            <div>
