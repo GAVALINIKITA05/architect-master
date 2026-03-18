@@ -110,7 +110,7 @@ export default function Home() {
 
   const styles = {
     page: {
-      fontFamily: "open sans ",
+      fontFamily: "Open Sans ",
       scrollBehavior: "smooth",
       color: "#1e293b",
       overflowX: "hidden",
