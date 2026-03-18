@@ -1220,6 +1220,8 @@ export default function Home() {
             <Link to="/project" style={styles.footerLink}>Projects</Link>
             <Link to="/contact" style={styles.footerLink}>Contact</Link>
             <Link to="/appointment" style={styles.footerLink}>Appointment</Link>
+                        <Link to="/appointment" style={styles.footerLink}>Appointment</Link>
+
           </div>
            <div>
               <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Legal</h4>
