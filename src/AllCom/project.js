@@ -65,10 +65,9 @@ const Project = () => {
   const tabItems = [
     { id: "home", label: "Home", path: "/" },
     { id: "about", label: "About", path: "/about" },
-     { id: "contact", label: "Contact", path: "/contact" },
+    { id: "contact", label: "Contact", path: "/contact" },
     { id: "services", label: "Services", path: "/services" },
     { id: "projects", label: "Projects", path: "/project" },
-   
     { id: "appointment", label: "Appointment", path: "/appointment" },
   ];
 
@@ -151,11 +150,11 @@ const Project = () => {
       scrollBehavior: "smooth",
       color: "#1e293b",
       overflowX: "hidden",
-      backgroundColor: "#ffffff", // Changed to white background
+      backgroundColor: "#ffffff",
       minHeight: "100vh",
     },
 
-    /* ---------- NAVBAR (Fixed Header) ---------- */
+    /* ---------- NAVBAR (Fixed Header - WHITE BACKGROUND) ---------- */
     navbar: {
       position: "fixed",
       top: 0,
@@ -168,21 +167,21 @@ const Project = () => {
         ? isMobile ? "12px 5%" : "12px 8%"
         : isMobile ? "15px 5%" : "18px 8%",
       background: scrolled 
-        ? "rgba(15, 23, 42, 0.95)" 
-        : "linear-gradient(to bottom, rgba(0,0,0,0.8), transparent)",
+        ? "rgba(255, 255, 255, 0.98)" // White background with high opacity
+        : "rgba(255, 255, 255, 0.95)", // White background
       backdropFilter: scrolled ? "blur(12px)" : "blur(4px)",
-      boxShadow: scrolled ? "0 10px 30px rgba(0,0,0,0.1)" : "none",
+      boxShadow: scrolled ? "0 10px 30px rgba(0,0,0,0.1)" : "0 4px 15px rgba(0,0,0,0.05)",
       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-      borderBottom: scrolled ? "1px solid rgba(255,255,255,0.1)" : "none",
+      borderBottom: scrolled ? "1px solid rgba(0,0,0,0.1)" : "1px solid rgba(0,0,0,0.08)",
     },
 
     logo: {
       fontSize: isMobile ? "22px" : "28px",
       fontWeight: "600",
-      color: "#fff",
+      color: "#0f172a", // Dark color for white background
       letterSpacing: "1px",
       cursor: "pointer",
-      background: "linear-gradient(135deg, #fff 0%, #e2e8f0 100%)",
+      background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
       transition: "0.3s",
@@ -207,7 +206,7 @@ const Project = () => {
     menuBar: {
       width: "24px",
       height: "2px",
-      background: "#fff",
+      background: "#12086F", // Dark color for white background
       margin: "3px 0",
       transition: "all 0.3s ease",
     },
@@ -215,7 +214,7 @@ const Project = () => {
     menuBar1: {
       width: "24px",
       height: "2px",
-      background: "#fff",
+      background: "#0f172a",
       margin: "3px 0",
       transition: "all 0.3s ease",
       transform: mobileMenuOpen ? "rotate(45deg) translate(5px, 5px)" : "none",
@@ -224,7 +223,7 @@ const Project = () => {
     menuBar2: {
       width: "24px",
       height: "2px",
-      background: "#fff",
+      background: "#0f172a",
       margin: "3px 0",
       transition: "all 0.3s ease",
       opacity: mobileMenuOpen ? 0 : 1,
@@ -233,7 +232,7 @@ const Project = () => {
     menuBar3: {
       width: "24px",
       height: "2px",
-      background: "#fff",
+      background: "#0f172a",
       margin: "3px 0",
       transition: "all 0.3s ease",
       transform: mobileMenuOpen ? "rotate(-45deg) translate(7px, -7px)" : "none",
@@ -248,7 +247,7 @@ const Project = () => {
       left: isMobile ? 0 : "auto",
       width: isMobile ? "100%" : "auto",
       height: isMobile ? "100vh" : "auto",
-      background: isMobile ? "rgba(15, 23, 42, 0.98)" : "transparent",
+      background: isMobile ? "rgba(255, 255, 255, 0.98)" : "transparent", // White background for mobile menu
       backdropFilter: isMobile ? "blur(10px)" : "none",
       padding: isMobile ? "80px 20px 40px" : "0",
       alignItems: isMobile ? "center" : "center",
@@ -261,7 +260,7 @@ const Project = () => {
 
     tabItem: {
       padding: isMobile ? "12px 30px" : "8px 20px",
-      color: "rgba(255,255,255,0.7)",
+      color: "#1286F", // Dark color for white background
       fontSize: isMobile ? "18px" : "15px",
       fontWeight: "600",
       cursor: "pointer",
@@ -274,7 +273,7 @@ const Project = () => {
     },
 
     activeTabItem: {
-      background: "linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)",
+      background: "#12087F",
       color: "#fff",
       boxShadow: "0 10px 25px rgba(56, 189, 248, 0.3)",
     },
@@ -386,7 +385,7 @@ const Project = () => {
     filterButton: (isActive) => ({
       padding: isMobile ? "10px 20px" : "12px 28px",
       border: isActive ? "none" : "1px solid #e2e8f0",
-      background: isActive ? "#0284c7" : "#ffffff",
+      background: isActive ? "#12087F" : "#ffffff",
       color: isActive ? "#ffffff" : "#475569",
       borderRadius: "50px",
       fontSize: isMobile ? "14px" : "15px",
@@ -442,7 +441,7 @@ const Project = () => {
       right: 0,
       bottom: 0,
       background: isHovered && !isMobile
-        ? "linear-gradient(to top, rgba(2,132,199,0.9), rgba(56,189,248,0.7))"
+        ? "linear-gradient(to top, rgba(15, 15, 15, 0.9), rgba(21, 20, 21, 0.7))"
         : "linear-gradient(to top, rgba(0,0,0,0.5), transparent)",
       transition: "all 0.4s ease",
       opacity: isHovered && !isMobile ? 1 : 0.7,
@@ -454,7 +453,7 @@ const Project = () => {
       left: "20px",
       padding: "6px 14px",
       background: "rgba(255,255,255,0.95)",
-      color: "#0284c7",
+      color: "#12086F",
       borderRadius: "50px",
       fontSize: isMobile ? "12px" : "13px",
       fontWeight: "600",
@@ -473,7 +472,7 @@ const Project = () => {
       fontSize: isMobile ? "22px" : "24px",
       fontWeight: "600",
       marginBottom: "12px",
-      color: "#1e293b",
+      color: "#12086F",
     },
 
     cardDesc: (isHovered) => ({
@@ -506,7 +505,7 @@ const Project = () => {
       display: "flex",
       alignItems: "center",
       gap: "8px",
-      color: isHovered && !isMobile ? "#0284c7" : "#94a3b8",
+      color: isHovered && !isMobile ? "#141414" : "#94a3b8",
       fontWeight: "600",
       fontSize: isMobile ? "14px" : "15px",
       transition: "all 0.3s ease",
@@ -525,9 +524,9 @@ const Project = () => {
     /* ---------- CTA SECTION ---------- */
     ctaSection: {
       padding: isMobile ? "60px 5%" : "80px 8%",
-      background: "linear-gradient(135deg, #77797d 0%, #767778 100%)",
+      // background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
       textAlign: "center",
-      color: "#fff",
+      color: "#12086F",
     },
 
     ctaContainer: {
@@ -539,13 +538,13 @@ const Project = () => {
       fontSize: isMobile ? "28px" : "36px",
       fontWeight: "600",
       marginBottom: "16px",
-      color: "white",
+      color: "#12086F",
       lineHeight: "1.3",
     },
 
     ctaSubtitle: {
       fontSize: isMobile ? "15px" : "18px",
-      color: "rgba(255,255,255,0.9)",
+      color: "rgba(10, 10, 10, 0.9)",
       marginBottom: "24px",
       lineHeight: "1.6",
       padding: isMobile ? "0 15px" : "0",
@@ -553,8 +552,8 @@ const Project = () => {
 
     ctaButton: {
       padding: isMobile ? "14px 32px" : "16px 48px",
-      background: "white",
-      color: "#0284c7",
+      background: "#939294",
+      color: "#101318",
       border: "none",
       borderRadius: "50px",
       fontSize: isMobile ? "15px" : "16px",
@@ -566,8 +565,8 @@ const Project = () => {
 
     /* ---------- FOOTER ---------- */
     footer: {
-      background: "#0f172a",
-      color: "#fff",
+      background: "#e9ebec",
+      color: "#121111",
       padding: isMobile ? "40px 5% 20px" : "60px 8% 30px",
     },
 
@@ -585,13 +584,13 @@ const Project = () => {
       fontSize: isMobile ? "24px" : "28px",
       fontWeight: "600",
       marginBottom: "15px",
-      background: "linear-gradient(135deg, #fff 0%, #94a3b8 100%)",
+      // background: "linear-gradient(135deg, #121212 0%, #222324 100%)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
     },
 
     footerLink: {
-      color: "rgba(255,255,255,0.7)",
+      color: "rgba(18, 17, 17, 0.7)",
       textDecoration: "none",
       display: "block",
       marginBottom: "10px",
@@ -603,7 +602,7 @@ const Project = () => {
       textAlign: "center",
       paddingTop: "30px",
       borderTop: "1px solid rgba(255,255,255,0.1)",
-      color: "rgba(255,255,255,0.6)",
+      color: "rgba(16, 16, 16, 0.6)",
       maxWidth: "1200px",
       margin: "0 auto",
       fontSize: isMobile ? "13px" : "15px",
@@ -612,7 +611,7 @@ const Project = () => {
 
   return (
     <div style={styles.page}>
-      {/* FIXED HEADER WITH NAVIGATION */}
+      {/* FIXED HEADER WITH NAVIGATION - WHITE BACKGROUND */}
       <nav style={styles.navbar}>
         <div style={styles.logo} onClick={() => navigate("/")}>
           ARCTITECH
@@ -642,14 +641,14 @@ const Project = () => {
               onClick={() => isMobile && setMobileMenuOpen(false)}
               onMouseEnter={(e) => {
                 if (!isMobile && window.location.pathname !== item.path) {
-                  e.target.style.background = "rgba(255,255,255,0.1)";
-                  e.target.style.color = "#fff";
+                  e.target.style.background = "rgba(15, 23, 42, 0.05)";
+                  e.target.style.color = "#0f172a";
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isMobile && window.location.pathname !== item.path) {
                   e.target.style.background = "transparent";
-                  e.target.style.color = "rgba(255,255,255,0.7)";
+                  e.target.style.color = "rgba(15, 23, 42, 0.7)";
                 }
               }}
             >
@@ -818,12 +817,12 @@ const Project = () => {
         <div style={styles.footerContent}>
           <div>
             <div style={styles.footerLogo}>ARCTITECH</div>
-            <p style={{ color: "rgba(255,255,255,0.7)", lineHeight: "1.7", fontSize: isMobile ? "14px" : "16px" }}>
+            <p style={{ color: "rgba(27, 26, 26, 0.7)", lineHeight: "1.7", fontSize: isMobile ? "14px" : "16px" }}>
               Creating timeless architecture that inspires and transforms.
             </p>
           </div>
           <div>
-            <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Quick Links</h4>
+            <h4 style={{ color: "#0c0b0b", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Quick Links</h4>
             <Link to="/" style={styles.footerLink}>Home</Link>
             <Link to="/about" style={styles.footerLink}>About Us</Link>
             <Link to="/services" style={styles.footerLink}>Services</Link>
@@ -831,17 +830,17 @@ const Project = () => {
             <Link to="/contact" style={styles.footerLink}>Contact</Link>
             <Link to="/appointment" style={styles.footerLink}>Appointment</Link>
           </div>
-           <div>
-                    <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Legal</h4>
-                                <Link to="/PrivacyPolicy" style={styles.footerLink}>Privacy Policy</Link>
-                                <Link to="/TearmsCondition" style={styles.footerLink}>Terms of Service</Link>
-                              </div>
           <div>
-            <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Contact</h4>
-            <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: "10px", fontSize: isMobile ? "14px" : "16px" }}>
+            <h4 style={{ color: "#151414", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Legal</h4>
+            <Link to="/PrivacyPolicy" style={styles.footerLink}>Privacy Policy</Link>
+            <Link to="/TearmsCondition" style={styles.footerLink}>Terms of Service</Link>
+          </div>
+          <div>
+            <h4 style={{ color: "#100f0f", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Contact</h4>
+            <p style={{ color: "rgba(13, 13, 13, 0.7)", marginBottom: "10px", fontSize: isMobile ? "14px" : "16px" }}>
               contact@arctitech.com
             </p>
-            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: isMobile ? "14px" : "16px" }}>+1 (555) 123-4567</p>
+            <p style={{ color: "rgba(25, 25, 25, 0.7)", fontSize: isMobile ? "14px" : "16px" }}>+91 98765 43210</p>
           </div>
         </div>
         <div style={styles.copyright}>
@@ -849,53 +848,7 @@ const Project = () => {
         </div>
       </footer>
 
-      {/* Global Styles */}
-      <style>
-        {`
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-
-          body {
-            overflow-x: hidden;
-            padding-top: ${isMobile ? '70px' : '80px'};
-            background-color: #ffffff;
-          }
-
-          a {
-            text-decoration: none;
-          }
-
-          button {
-            outline: none;
-            cursor: pointer;
-            border: none;
-          }
-
-          img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-          }
-
-          a:hover {
-            color: #38bdf8 !important;
-          }
-        `}
-      </style>
+      
     </div>
   );
 };

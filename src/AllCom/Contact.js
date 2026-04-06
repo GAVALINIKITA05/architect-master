@@ -73,7 +73,6 @@ const Contact = () => {
     { id: "contact", label: "Contact", path: "/contact" },
     { id: "services", label: "Services", path: "/services" },
     { id: "projects", label: "Projects", path: "/project" },
-
     { id: "appointment", label: "Appointment", path: "/appointment" },
   ];
 
@@ -658,12 +657,12 @@ const Contact = () => {
   const styles = {
     page: {
       fontFamily: "Open Sans",
-      color: "#1e293b",
+      color: "#12086F",
       scrollBehavior: "smooth",
       overflowX: "hidden"
     },
 
-    /* ---------- NAVBAR (Fixed Header) ---------- */
+    /* ---------- NAVBAR (Fixed Header - WHITE BACKGROUND) ---------- */
     navbar: {
       position: "fixed",
       top: 0,
@@ -676,21 +675,21 @@ const Contact = () => {
         ? isMobile ? "12px 5%" : "12px 8%"
         : isMobile ? "15px 5%" : "18px 8%",
       background: scrolled
-        ? "rgba(15, 23, 42, 0.95)"
-        : "linear-gradient(to bottom, rgba(0,0,0,0.8), transparent)",
+        ? "rgba(255, 255, 255, 0.98)" // White background with high opacity
+        : "rgba(255, 255, 255, 0.95)", // White background
       backdropFilter: scrolled ? "blur(12px)" : "blur(4px)",
-      boxShadow: scrolled ? "0 10px 30px rgba(0,0,0,0.1)" : "none",
+      boxShadow: scrolled ? "0 10px 30px rgba(0,0,0,0.1)" : "0 4px 15px rgba(0,0,0,0.05)",
       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-      borderBottom: scrolled ? "1px solid rgba(255,255,255,0.1)" : "none",
+      borderBottom: scrolled ? "1px solid rgba(0,0,0,0.1)" : "1px solid rgba(0,0,0,0.08)",
     },
 
     logo: {
       fontSize: isMobile ? "22px" : "28px",
       fontWeight: "600",
-      color: "#fff",
+      color: "#12086F", // Dark color for white background
       letterSpacing: "1px",
       cursor: "pointer",
-      background: "linear-gradient(135deg, #fff 0%, #e2e8f0 100%)",
+      background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
       transition: "0.3s",
@@ -715,7 +714,7 @@ const Contact = () => {
     menuBar: {
       width: "24px",
       height: "2px",
-      background: "#fff",
+      background: "#12086F", // Dark color for white background
       margin: "3px 0",
       transition: "all 0.3s ease",
     },
@@ -723,7 +722,7 @@ const Contact = () => {
     menuBar1: {
       width: "24px",
       height: "2px",
-      background: "#fff",
+      background: "#12086F",
       margin: "3px 0",
       transition: "all 0.3s ease",
       transform: mobileMenuOpen ? "rotate(45deg) translate(5px, 5px)" : "none",
@@ -732,7 +731,7 @@ const Contact = () => {
     menuBar2: {
       width: "24px",
       height: "2px",
-      background: "#fff",
+      background: "#0f172a",
       margin: "3px 0",
       transition: "all 0.3s ease",
       opacity: mobileMenuOpen ? 0 : 1,
@@ -741,7 +740,7 @@ const Contact = () => {
     menuBar3: {
       width: "24px",
       height: "2px",
-      background: "#fff",
+      background: "#0f172a",
       margin: "3px 0",
       transition: "all 0.3s ease",
       transform: mobileMenuOpen ? "rotate(-45deg) translate(7px, -7px)" : "none",
@@ -756,7 +755,7 @@ const Contact = () => {
       left: isMobile ? 0 : "auto",
       width: isMobile ? "100%" : "auto",
       height: isMobile ? "100vh" : "auto",
-      background: isMobile ? "rgba(15, 23, 42, 0.98)" : "transparent",
+      background: isMobile ? "rgba(255, 255, 255, 0.98)" : "transparent", // White background for mobile menu
       backdropFilter: isMobile ? "blur(10px)" : "none",
       padding: isMobile ? "80px 20px 40px" : "0",
       alignItems: isMobile ? "center" : "center",
@@ -769,7 +768,7 @@ const Contact = () => {
 
     tabItem: {
       padding: isMobile ? "12px 30px" : "8px 20px",
-      color: "rgba(255,255,255,0.7)",
+      color: "rgba(15, 23, 42, 0.7)", // Dark color for white background
       fontSize: isMobile ? "18px" : "15px",
       fontWeight: "600",
       cursor: "pointer",
@@ -782,8 +781,8 @@ const Contact = () => {
     },
 
     activeTabItem: {
-      background: "linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)",
-      color: "#fff",
+      background: "linear-gradient(135deg, #12086F 0%, #12086F 100%)",
+      color: "#4caeeb",
       boxShadow: "0 10px 25px rgba(56, 189, 248, 0.3)",
     },
 
@@ -875,7 +874,7 @@ const Contact = () => {
       borderRadius: "50px",
       fontSize: isMobile ? "12px" : "13px",
       fontWeight: "600",
-      color: "#0369a1",
+      color: "#12086F",
       marginBottom: isMobile ? "15px" : "20px",
       textTransform: "uppercase",
       letterSpacing: "1px"
@@ -885,7 +884,7 @@ const Contact = () => {
       fontSize: isMobile ? "26px" : isTablet ? "32px" : "clamp(28px, 5vw, 36px)",
       fontWeight: "600",
       marginBottom: isMobile ? "16px" : "24px",
-      color: "#0f172a",
+      color: "#12086F",
       lineHeight: "1.2"
     },
 
@@ -951,7 +950,7 @@ const Contact = () => {
     socialTitle: {
       fontSize: isMobile ? "16px" : "18px",
       fontWeight: "600",
-      color: "#0f172a",
+      color: "#12086F",
       marginBottom: isMobile ? "15px" : "20px"
     },
 
@@ -992,7 +991,7 @@ const Contact = () => {
       fontSize: isMobile ? "24px" : isTablet ? "26px" : "28px",
       fontWeight: "600",
       marginBottom: "8px",
-      color: "#0f172a",
+      color: "#12086F",
       textAlign: isMobile ? "center" : "left"
     },
 
@@ -1066,7 +1065,7 @@ const Contact = () => {
       color: "#1e293b",
       minHeight: isMobile ? "120px" : "140px",
       resize: "vertical",
-      fontFamily: "inherit"
+      fontFamily: "Open Sans ",
     },
 
     errorMessage: {
@@ -1197,7 +1196,7 @@ const Contact = () => {
     /* ---------- FAQ SECTION ---------- */
     faqSection: {
       padding: isMobile ? "60px 5%" : isTablet ? "80px 6%" : "100px 8%",
-      backgroundColor: "#e0dcdc"
+      // backgroundColor: "#e0dcdc"
     },
 
     faqTitle: {
@@ -1205,7 +1204,7 @@ const Contact = () => {
       fontWeight: "700",
       textAlign: "center",
       marginBottom: "15px",
-      color: "#0f172a"
+      color: "#12086F"
     },
 
     faqSubtitle: {
@@ -1236,7 +1235,7 @@ const Contact = () => {
     faqQuestion: {
       fontSize: isMobile ? "16px" : "18px",
       fontWeight: "700",
-      color: "#0f172a",
+      color: "#12086F",
       marginBottom: "8px"
     },
 
@@ -1248,9 +1247,9 @@ const Contact = () => {
 
     /* ---------- CTA SECTION ---------- */
     ctaSection: {
+      // background:"#12086F",
       padding: isMobile ? "60px 5%" : isTablet ? "70px 6%" : "80px 8%",
-      background: "linear-gradient(135deg, #b3b3b5 0%, #cbcdcf 100%)",
-      color: "#fff",
+      color: "#12086F",
       textAlign: "center"
     },
 
@@ -1262,9 +1261,7 @@ const Contact = () => {
 
     ctaBtn: {
       padding: isMobile ? "14px 32px" : "16px 48px",
-      background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
-      color: "#fff",
-      border: "none",
+      background: " #d1d0d2",
       borderRadius: "50px",
       fontSize: isMobile ? "15px" : "16px",
       fontWeight: "600",
@@ -1276,8 +1273,8 @@ const Contact = () => {
 
     /* ---------- FOOTER ---------- */
     footer: {
-      background: "#0f172a",
-      color: "#fff",
+      background: "#e9ebec",
+      color: "#100d0d",
       padding: isMobile ? "40px 5% 20px" : "60px 8% 30px"
     },
 
@@ -1291,17 +1288,17 @@ const Contact = () => {
       textAlign: isMobile ? "center" : "left"
     },
 
-    footerLogo: {
+    o: {
       fontSize: isMobile ? "24px" : "28px",
       fontWeight: "800",
       marginBottom: "15px",
-      background: "linear-gradient(135deg, #fff 0%, #94a3b8 100%)",
+      background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent"
     },
 
     footerLink: {
-      color: "rgba(255,255,255,0.7)",
+      color: "rgba(20, 16, 16, 0.7)",
       textDecoration: "none",
       display: "block",
       marginBottom: "10px",
@@ -1312,8 +1309,8 @@ const Contact = () => {
     copyright: {
       textAlign: "center",
       paddingTop: "30px",
-      borderTop: "1px solid rgba(255,255,255,0.1)",
-      color: "rgba(255,255,255,0.6)",
+      borderTop: "1px solid rgba(15, 14, 14, 0.1)",
+      color: "rgba(16, 12, 12, 0.6)",
       maxWidth: "1200px",
       margin: "0 auto",
       fontSize: isMobile ? "13px" : "15px"
@@ -1341,7 +1338,7 @@ const Contact = () => {
 
   return (
     <div style={styles.page}>
-      {/* FIXED HEADER WITH NAVIGATION */}
+      {/* FIXED HEADER WITH NAVIGATION - WHITE BACKGROUND */}
       <nav style={styles.navbar}>
         <div style={styles.logo} onClick={() => navigate("/")}>
           ARCTITECH
@@ -1362,7 +1359,7 @@ const Contact = () => {
         <div style={styles.navMenu} className="mobile-menu">
           {tabItems.map((item) => (
             <Link
-              key={item.id}
+              key={item.id}footerLog
               to={item.path}
               style={{
                 ...styles.tabItem,
@@ -1371,14 +1368,14 @@ const Contact = () => {
               onClick={() => isMobile && setMobileMenuOpen(false)}
               onMouseEnter={(e) => {
                 if (!isMobile && window.location.pathname !== item.path) {
-                  e.target.style.background = "rgba(255,255,255,0.1)";
-                  e.target.style.color = "#fff";
+                  e.target.style.background = "rgba(15, 23, 42, 0.05)";
+                  e.target.style.color = "#0f172a";
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isMobile && window.location.pathname !== item.path) {
                   e.target.style.background = "transparent";
-                  e.target.style.color = "rgba(255,255,255,0.7)";
+                  e.target.style.color = "rgba(15, 23, 42, 0.7)";
                 }
               }}
             >
@@ -1975,7 +1972,7 @@ const Contact = () => {
 
       {/* CTA SECTION */}
       <section style={styles.ctaSection}>
-        <h2 style={styles.ctaTitle}>Ready to Start Your Project?</h2>
+        <h2 style={{...styles.ctaTitle,color: "#12086F"}}>Ready to Start Your Project?</h2>
         <p style={{
           fontSize: isMobile ? "15px" : "18px",
           opacity: 0.95,
@@ -2009,12 +2006,12 @@ const Contact = () => {
         <div style={styles.footerContent}>
           <div>
             <div style={styles.footerLogo}>ARCTITECH</div>
-            <p style={{ color: "rgba(255,255,255,0.7)", lineHeight: "1.7", fontSize: isMobile ? "14px" : "16px" }}>
+            <p style={{ color: "rgba(20, 16, 16, 0.7)", lineHeight: "1.7", fontSize: isMobile ? "14px" : "16px" }}>
               Creating timeless architecture that inspires and transforms.
             </p>
           </div>
           <div>
-            <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Quick Links</h4>
+            <h4 style={{ color: "#0f172a", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Quick Links</h4>
             <Link to="/" style={styles.footerLink}>Home</Link>
             <Link to="/about" style={styles.footerLink}>About Us</Link>
             <Link to="/services" style={styles.footerLink}>Services</Link>
@@ -2023,19 +2020,19 @@ const Contact = () => {
             <Link to="/appointment" style={styles.footerLink}>Appointment</Link>
           </div>
           <div>
-            <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Legal</h4>
+            <h4 style={{ color: "#0f172a", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Legal</h4>
             <Link to="/PrivacyPolicy" style={styles.footerLink}>Privacy Policy</Link>
             <Link to="/TearmsCondition" style={styles.footerLink}>Terms of Service</Link>
           </div>
           <div>
-            <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Contact</h4>
-            <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: "10px", fontSize: isMobile ? "14px" : "16px" }}>
+            <h4 style={{ color: "#0f172a", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Contact</h4>
+            <p style={{ color: "rgba(20, 16, 16, 0.7)", marginBottom: "10px", fontSize: isMobile ? "14px" : "16px" }}>
               Pune, Maharashtra
             </p>
-            <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: "10px", fontSize: isMobile ? "14px" : "16px" }}>
+            <p style={{ color: "rgba(20, 16, 16, 0.7)", marginBottom: "10px", fontSize: isMobile ? "14px" : "16px" }}>
               +91 98765 43210
             </p>
-            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: isMobile ? "14px" : "16px" }}>
+            <p style={{ color: "rgba(20, 16, 16, 0.7)", fontSize: isMobile ? "14px" : "16px" }}>
               info@arctitech.com
             </p>
           </div>
@@ -2044,120 +2041,6 @@ const Contact = () => {
           © {new Date().getFullYear()} ARCTITECH. All rights reserved.
         </div>
       </footer>
-
-      {/* Global Styles */}
-      <style>
-        {`
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          @keyframes fadeInLeft {
-            from {
-              opacity: 0;
-              transform: translateX(-30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateX(0);
-            }
-          }
-
-          @keyframes fadeInRight {
-            from {
-              opacity: 0;
-              transform: translateX(30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateX(0);
-            }
-          }
-
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-
-          @keyframes slideDown {
-            from {
-              opacity: 0;
-              transform: translateY(-10px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-
-          body {
-            overflow-x: hidden;
-            padding-top: ${isMobile ? '70px' : '80px'};
-          }
-
-          a {
-            text-decoration: none;
-          }
-
-          button {
-            outline: none;
-            cursor: pointer;
-            border: none;
-          }
-
-          input, textarea, select {
-            font-family: inherit;
-          }
-
-          * {
-            -webkit-tap-highlight-color: transparent;
-          }
-
-          html {
-            scroll-behavior: smooth;
-          }
-
-          select option {
-            padding: 10px;
-          }
-
-          /* Custom scrollbar */
-          ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-          }
-
-          ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-          }
-
-          ::-webkit-scrollbar-thumb {
-            background: #94a3b8;
-            border-radius: 4px;
-          }
-
-          ::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
-          }
-        `}
-      </style>
     </div>
   );
 };

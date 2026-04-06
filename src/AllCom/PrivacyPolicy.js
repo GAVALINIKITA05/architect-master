@@ -42,7 +42,7 @@ const Header = () => {
   );
 };
 
-// Footer component (identical)
+// Footer component
 const Footer = () => {
   return (
     <footer style={footerStyles.container}>
@@ -52,7 +52,7 @@ const Footer = () => {
         </p>
         <div style={footerStyles.links}>
           <a href="/PrivacyPolicy" className="footer-link" style={footerStyles.link}>Privacy Policy</a>
-          <a href="/terms" className="footer-link" style={footerStyles.link}>Terms of Service</a>
+          <a href="/TearmsCondition" className="footer-link" style={footerStyles.link}>Terms of Service</a>
           <a href="/contact" className="footer-link" style={footerStyles.link}>Contact Us</a>
         </div>
       </div>
@@ -60,152 +60,139 @@ const Footer = () => {
   );
 };
 
-// Main Terms and Conditions component
-const TermsAndConditions = () => {
+// Main Privacy Policy component
+const PrivacyPolicy = () => {
   return (
     <>
       <Header />
       <div style={styles.pageWrapper}>
         <div style={styles.card}>
-          <h1 style={styles.heading}>Terms and Conditions</h1>
+          <h1 style={styles.heading}>Privacy Policy</h1>
           <p style={styles.effectiveDate}>
             <strong>Effective date: 2nd March 2026</strong>
           </p>
 
           <div style={styles.content}>
             <p style={styles.paragraph}>
-              Welcome to ARCTITECH. These Terms and Conditions govern your use of our website and services. By accessing or using our website, you agree to be bound by these terms. If you do not agree, please do not use our services.
+              At ARCTITECH, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
             </p>
 
-            <h2 style={styles.subheading}>1. Acceptance of Terms</h2>
+            <h2 style={styles.subheading}>1. Information We Collect</h2>
             <p style={styles.paragraph}>
-              By accessing the website of ARCTITECH, you confirm that you accept these terms and conditions and that you agree to comply with them. If you do not agree, you must not use our website.
+              We may collect personal information that you voluntarily provide to us when you express an interest in obtaining information about us or our products and services, when you participate in activities on the website, or otherwise when you contact us. The personal information we collect may include:
+            </p>
+            <ul style={styles.list}>
+              <li style={styles.listItem}>Name and contact information (email address, phone number, mailing address)</li>
+              <li style={styles.listItem}>Project preferences and requirements</li>
+              <li style={styles.listItem}>Communication preferences</li>
+              <li style={styles.listItem}>Any other information you choose to provide</li>
+            </ul>
+
+            <h2 style={styles.subheading}>2. How We Use Your Information</h2>
+            <p style={styles.paragraph}>
+              We use the information we collect or receive:
+            </p>
+            <ul style={styles.list}>
+              <li style={styles.listItem}>To provide, operate, and maintain our website and services</li>
+              <li style={styles.listItem}>To improve, personalize, and expand our website and services</li>
+              <li style={styles.listItem}>To understand and analyze how you use our website</li>
+              <li style={styles.listItem}>To develop new products, services, features, and functionality</li>
+              <li style={styles.listItem}>To communicate with you, including for customer service, updates, and marketing purposes</li>
+              <li style={styles.listItem}>To process your project inquiries and appointment requests</li>
+              <li style={styles.listItem}>To send you architectural inspiration, newsletters, and promotional materials</li>
+              <li style={styles.listItem}>To find and prevent fraud</li>
+            </ul>
+
+            <h2 style={styles.subheading}>3. Sharing Your Information</h2>
+            <p style={styles.paragraph}>
+              We may share your personal information in the following situations:
+            </p>
+            <ul style={styles.list}>
+              <li style={styles.listItem}><strong>With Service Providers:</strong> We may share your information with third-party vendors, service providers, contractors, or agents who perform services for us or on our behalf.</li>
+              <li style={styles.listItem}><strong>Business Transfers:</strong> We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business.</li>
+              <li style={styles.listItem}><strong>With Your Consent:</strong> We may disclose your personal information for any other purpose with your consent.</li>
+              <li style={styles.listItem}><strong>Legal Requirements:</strong> We may disclose your information where we are legally required to do so in order to comply with applicable law, governmental requests, or legal proceedings.</li>
+            </ul>
+
+            <h2 style={styles.subheading}>4. Cookies and Tracking Technologies</h2>
+            <p style={styles.paragraph}>
+              We may use cookies, web beacons, tracking pixels, and other tracking technologies on our website to help customize the site and improve your experience. When you access our website, your personal information is not collected through the use of tracking technology. Most browsers are set to accept cookies by default. You can remove or reject cookies, but be aware that such action could affect the availability and functionality of our website.
             </p>
 
-            <h2 style={styles.subheading}>2. Changes to Terms</h2>
+            <h2 style={styles.subheading}>5. Data Security</h2>
             <p style={styles.paragraph}>
-              We reserve the right to modify these terms at any time. Any changes will be effective immediately upon posting on this page. Your continued use of the website constitutes acceptance of the revised terms.
+              We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, despite our safeguards and efforts to secure your information, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure. We cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information.
             </p>
 
-            <h2 style={styles.subheading}>3. Use of Our Services</h2>
+            <h2 style={styles.subheading}>6. Data Retention</h2>
             <p style={styles.paragraph}>
-              You agree to use our services only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the website. Prohibited behavior includes harassing or causing distress or inconvenience to any other user, transmitting obscene or offensive content, or disrupting the normal flow of dialogue within our website.
+              We will retain your personal information only for as long as is necessary for the purposes set out in this Privacy Policy, unless a longer retention period is required or permitted by law. When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize it.
             </p>
 
-            <h2 style={styles.subheading}>4. Intellectual Property</h2>
+            <h2 style={styles.subheading}>7. Your Privacy Rights</h2>
             <p style={styles.paragraph}>
-              All content on this website, including text, graphics, logos, images, and software, is the property of ARCTITECH or its content suppliers and is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written consent.
+              Depending on your location, you may have certain rights regarding your personal information, including:
+            </p>
+            <ul style={styles.list}>
+              <li style={styles.listItem}>The right to access and receive a copy of your personal information</li>
+              <li style={styles.listItem}>The right to request rectification or erasure of your personal information</li>
+              <li style={styles.listItem}>The right to restrict or object to processing of your personal information</li>
+              <li style={styles.listItem}>The right to data portability</li>
+              <li style={styles.listItem}>The right to withdraw consent at any time</li>
+            </ul>
+            <p style={styles.paragraph}>
+              To exercise these rights, please contact us using the information provided in the "Contact Us" section below.
             </p>
 
-            <h2 style={styles.subheading}>5. Limitation of Liability</h2>
+            <h2 style={styles.subheading}>8. Children's Privacy</h2>
             <p style={styles.paragraph}>
-              ARCTITECH will not be liable for any direct, indirect, incidental, or consequential damages arising out of your use or inability to use our website or services, even if we have been advised of the possibility of such damages.
+              Our website and services are not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If we learn we have collected or received personal information from a child under 13 without verification of parental consent, we will delete that information. If you believe we might have any information from or about a child under 13, please contact us.
             </p>
 
-            <h2 style={styles.subheading}>6. Third-Party Links</h2>
+            <h2 style={styles.subheading}>9. Third-Party Websites</h2>
             <p style={styles.paragraph}>
-              Our website may contain links to third-party websites. These links are provided for your convenience only. We have no control over the content of those sites and accept no responsibility for them.
+              Our website may contain links to third-party websites, including social media platforms. We are not responsible for the privacy practices or the content of these third-party sites. We encourage you to read the privacy policies of any third-party websites you visit.
             </p>
 
-            <h2 style={styles.subheading}>7. Governing Law</h2>
+            <h2 style={styles.subheading}>10. International Data Transfers</h2>
             <p style={styles.paragraph}>
-              These terms shall be governed by and construed in accordance with the laws of India, and you irrevocably submit to the exclusive jurisdiction of the courts in Hyderabad.
+              Your information may be transferred to and maintained on computers located outside of your state, province, country, or other governmental jurisdiction where the data protection laws may differ from those in your jurisdiction. By using our website and services, you consent to the transfer of your information to countries outside your country of residence.
             </p>
 
-            <h2 style={styles.subheading}>8. Contact Information</h2>
+            <h2 style={styles.subheading}>11. Updates to This Privacy Policy</h2>
             <p style={styles.paragraph}>
-              If you have any questions about these Terms and Conditions, please contact us at:
+              We may update this Privacy Policy from time to time. The updated version will be indicated by an updated "Effective Date" and the updated version will be effective as soon as it is accessible. We encourage you to review this Privacy Policy frequently to be informed of how we are protecting your information.
+            </p>
+
+            <h2 style={styles.subheading}>12. Contact Us</h2>
+            <p style={styles.paragraph}>
+              If you have questions or comments about this Privacy Policy, please contact us at:
             </p>
             <p style={styles.paragraph}>
-              Email: <a href="mailto:legal@arctitech.com" style={styles.link}>legal@arctitech.com</a><br />
+              <strong>ARCTITECH</strong><br />
+              Email: <a href="mailto:privacy@arctitech.com" style={styles.link}>privacy@arctitech.com</a><br />
               Phone: +91 123 456 7890<br />
               Address: Hyderabad, India
             </p>
 
             <p style={styles.paragraph}>
-              By using our website, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.
+              By using our website and services, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy.
             </p>
           </div>
         </div>
       </div>
       <Footer />
 
-      <style>{`
-        .nav-link {
-          transition: color 0.2s ease, border-bottom-color 0.2s ease;
-        }
-        .nav-link:hover {
-          color: #2d7a6e;
-          border-bottom-color: #2d7a6e;
-        }
-        .footer-link {
-          transition: color 0.2s ease;
-        }
-        .footer-link:hover {
-          color: #ffffff;
-          text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-          header > div:first-child + div {
-            display: flex !important;
-          }
-
-          nav.nav-menu {
-            position: absolute;
-            top: 80px;
-            left: 0;
-            right: 0;
-            background-color: #605e5e;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            z-index: 1000;
-            border-bottom: 1px solid #5b5f64;
-            display: flex;
-          }
-
-          nav.nav-menu.open {
-            max-height: 300px;
-            padding: 10px 0;
-          }
-
-          nav.nav-menu a {
-            width: 100%;
-            text-align: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #7a7f85;
-          }
-
-          nav.nav-menu a:last-child {
-            border-bottom: none;
-          }
-
-          .card {
-            padding: 30px 20px !important;
-          }
-          h1 {
-            font-size: 2.2rem !important;
-          }
-          footer > div {
-            flex-direction: column;
-            text-align: center;
-          }
-        }
-      `}</style>
-    </>
+      </>
   );
 };
 
-// Styles for the main content (matching PrivacyPolicy)
+// Styles for the main content
 const styles = {
   pageWrapper: {
     backgroundColor: '#d5d6d8',
     padding: '40px 20px',
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    fontFamily: "Open Sans",
   },
   card: {
     maxWidth: '900px',
@@ -257,9 +244,19 @@ const styles = {
     textDecoration: 'none',
     borderBottom: '1px dotted #2d7a6e',
   },
+  list: {
+    marginBottom: '24px',
+    paddingLeft: '20px',
+  },
+  listItem: {
+    marginBottom: '12px',
+    lineHeight: '1.7',
+    fontSize: '1.05rem',
+    color: '#2c3e50',
+  },
 };
 
-// Header-specific styles (with background image)
+// Header-specific styles
 const headerStyles = {
   container: {
     position: 'relative',
@@ -325,7 +322,7 @@ const headerStyles = {
   },
 };
 
-// Footer-specific styles (identical)
+// Footer-specific styles
 const footerStyles = {
   container: {
     backgroundColor: '#1e2b3a',
@@ -360,4 +357,4 @@ const footerStyles = {
   },
 };
 
-export default TermsAndConditions;
+export default PrivacyPolicy;

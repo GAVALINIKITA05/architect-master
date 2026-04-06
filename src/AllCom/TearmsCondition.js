@@ -274,11 +274,12 @@ const headerStyles = {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     borderBottom: '1px solid #5b5f64',
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    fontFamily: "Open Sans",
     flexWrap: 'wrap',
     zIndex: 10,
   },
   overlay: {
+    
     position: 'absolute',
     top: 0,
     left: 0,
@@ -333,7 +334,7 @@ const footerStyles = {
     backgroundColor: '#1e2b3a',
     color: '#ffffff',
     padding: '40px 20px',
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    fontFamily: "Open Sans",
   },
   content: {
     maxWidth: '1200px',

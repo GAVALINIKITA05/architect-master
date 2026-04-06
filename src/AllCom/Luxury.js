@@ -113,12 +113,43 @@ const Luxury = () => {
       textAlign: "center",
     },
 
+    // Footer Styles
     footer: {
-      backgroundColor: "#111827",
-      color: "#fff",
-      textAlign: "center",
-      padding: "30px",
+      backgroundColor: "#e9ebec",
+      color: "#141313",
+      padding: "60px 10% 30px",
       marginTop: "60px",
+    },
+
+    footerContent: {
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+      gap: "40px",
+      marginBottom: "40px",
+    },
+
+    footerLogo: {
+      fontSize: "28px",
+      fontWeight: "bold",
+      marginBottom: "20px",
+      color: "#151414",
+    },
+
+    footerLink: {
+      display: "block",
+      color: "rgba(16, 15, 15, 0.7)",
+      textDecoration: "none",
+      marginBottom: "12px",
+      transition: "color 0.3s ease",
+      cursor: "pointer",
+    },
+
+    copyright: {
+      textAlign: "center",
+      paddingTop: "30px",
+      borderTop: "1px solid rgba(255,255,255,0.1)",
+      color: "rgba(21, 21, 21, 0.6)",
+      fontSize: "14px",
     },
   };
 
@@ -197,14 +228,48 @@ const Luxury = () => {
             <div style={styles.card}>Power Backup</div>
           </div>
         </div>
-
-  
       </div>
 
       {/* Footer */}
-      <div style={styles.footer}>
-        © 2026 Luxury Apartment Project | Elegant Living Experience
-      </div>
+      <footer style={styles.footer}>
+        <div style={styles.footerContent}>
+          <div>
+            <div style={styles.footerLogo}>ARCTITECH</div>
+            <p style={{ color: "rgba(16, 16, 16, 0.7)", lineHeight: "1.7" }}>
+              Creating timeless architecture that inspires and transforms.
+            </p>
+          </div>
+          <div>
+            <h4 style={{ color: "#141414", marginBottom: "24px" }}>Quick Links</h4>
+            <a href="/" style={styles.footerLink}>Home</a>
+            <a href="/project" style={styles.footerLink}>Projects</a>
+            <a href="/services" style={styles.footerLink}>Services</a>
+            <a href="/contact" style={styles.footerLink}>Contact</a>
+          </div>
+          <div>
+            <h4 style={{ color: "#121212", marginBottom: "24px" }}>Project Info</h4>
+            <a href="/1bhk" style={styles.footerLink}>1BHK Apartment</a>
+            <a href="/luxury" style={styles.footerLink}>Luxury Apartment</a>
+            <a href="/office" style={styles.footerLink}>Office Space</a>
+            <a href="/beach" style={styles.footerLink}>Beach Apartment</a>
+          </div>
+          <div>
+            <h4 style={{ color: "#090808", marginBottom: "24px" }}>Contact</h4>
+            <p style={{ color: "rgba(4, 4, 4, 0.7)", marginBottom: "12px" }}>
+              Pune, Maharashtra
+            </p>
+            <p style={{ color: "rgba(19, 19, 19, 0.7)", marginBottom: "12px" }}>
+              +91 98765 43210
+            </p>
+            <p style={{ color: "rgba(10, 9, 9, 0.7)" }}>
+              projects@arctitech.com
+            </p>
+          </div>
+        </div>
+        <div style={styles.copyright}>
+          © {new Date().getFullYear()} Luxury Apartment Project | Elegant Living Experience
+        </div>
+      </footer>
     </div>
   );
 };

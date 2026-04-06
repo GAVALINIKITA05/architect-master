@@ -3,9 +3,11 @@ import img4 from "../bg2.jpg";
 import img1 from "../bg1.jpg";
 import img2 from "../bg2.jpg";
 import img3 from "../bg4.jpg";
+
 const Office = () => {
-  const images = [img1, img2, img3,img4];
+  const images = [img1, img2, img3, img4];
   const [current, setCurrent] = useState(0);
+  
   // Auto Slide
   useEffect(() => {
     const interval = setInterval(() => {
@@ -113,12 +115,43 @@ const Office = () => {
       textAlign: "center",
     },
 
+    // Footer Styles
     footer: {
-      backgroundColor: "#0f172a",
-      color: "#fff",
-      textAlign: "center",
-      padding: "30px",
+      backgroundColor: "#e9ebec",
+      color: "#1e1c1c",
+      padding: "60px 10% 30px",
       marginTop: "60px",
+    },
+
+    footerContent: {
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+      gap: "40px",
+      marginBottom: "40px",
+    },
+
+    footerLogo: {
+      fontSize: "28px",
+      fontWeight: "bold",
+      marginBottom: "20px",
+      color: "#151414",
+    },
+
+    footerLink: {
+      display: "block",
+      color: "rgba(19, 18, 18, 0.7)",
+      textDecoration: "none",
+      marginBottom: "12px",
+      transition: "color 0.3s ease",
+      cursor: "pointer",
+    },
+
+    copyright: {
+      textAlign: "center",
+      paddingTop: "30px",
+      borderTop: "1px solid rgba(255,255,255,0.1)",
+      color: "rgba(26, 25, 25, 0.6)",
+      fontSize: "14px",
     },
   };
 
@@ -197,24 +230,48 @@ const Office = () => {
             <div style={styles.card}>Power Backup</div>
           </div>
         </div>
-
-        {/* Why Choose */}
-        <div style={styles.sectionBox}>
-          <h2 style={styles.sectionTitle}>Why Choose This Office?</h2>
-          <p>
-            ✔ Strategic business location<br />
-            ✔ Elegant & modern interior design<br />
-            ✔ Spacious and flexible layout<br />
-            ✔ Comfortable working environment<br />
-            ✔ Ideal for startups & corporate teams
-          </p>
-        </div>
       </div>
 
       {/* Footer */}
-      <div style={styles.footer}>
-        © 2026 Office Apartment Project | Designed for Modern Businesses
-      </div>
+      <footer style={styles.footer}>
+        <div style={styles.footerContent}>
+          <div>
+            <div style={styles.footerLogo}>ARCTITECH</div>
+            <p style={{ color: "rgba(17, 16, 16, 0.7)", lineHeight: "1.7" }}>
+              Creating timeless architecture that inspires and transforms.
+            </p>
+          </div>
+          <div>
+            <h4 style={{ color: "#100f0f", marginBottom: "24px" }}>Quick Links</h4>
+            <a href="/" style={styles.footerLink}>Home</a>
+            <a href="/project" style={styles.footerLink}>Projects</a>
+            <a href="/services" style={styles.footerLink}>Services</a>
+            <a href="/contact" style={styles.footerLink}>Contact</a>
+          </div>
+          <div>
+            <h4 style={{ color: "#151414", marginBottom: "24px" }}>Project Info</h4>
+            <a href="/1bhk" style={styles.footerLink}>1BHK Apartment</a>
+            <a href="/luxury" style={styles.footerLink}>Luxury Apartment</a>
+            <a href="/office" style={styles.footerLink}>Office Space</a>
+            <a href="/beach" style={styles.footerLink}>Beach Apartment</a>
+          </div>
+          <div>
+            <h4 style={{ color: "#1c1c1c", marginBottom: "24px" }}>Contact</h4>
+            <p style={{ color: "rgba(22, 21, 21, 0.7)", marginBottom: "12px" }}>
+              Pune, Maharashtra
+            </p>
+            <p style={{ color: "rgba(28, 26, 26, 0.7)", marginBottom: "12px" }}>
+              +91 98765 43210
+            </p>
+            <p style={{ color: "rgba(24, 23, 23, 0.7)" }}>
+              projects@arctitech.com
+            </p>
+          </div>
+        </div>
+        <div style={styles.copyright}>
+          © {new Date().getFullYear()} Office Apartment Project | Designed for Modern Businesses
+        </div>
+      </footer>
     </div>
   );
 };

@@ -11,19 +11,19 @@ const About = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showScrollHint, setShowScrollHint] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  
+
   const tabsRef = useRef(null);
 
   // Handle scroll and resize
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      
+
       // AUTO CLOSE MOBILE MENU WHEN SCROLLING
       if (menuOpen) {
         setMenuOpen(false);
       }
-      
+
       // Hide scroll hint after scrolling
       if (window.scrollY > 100) {
         setShowScrollHint(false);
@@ -40,7 +40,7 @@ const About = () => {
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
@@ -50,13 +50,13 @@ const About = () => {
   // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuOpen && !event.target.closest('.mobile-menu') && !event.target.closest('.menu-btn')) {
+      if (menuOpen && !event.target.closest(".mobile-menu") && !event.target.closest(".menu-btn")) {
         setMenuOpen(false);
       }
     };
-    
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, [menuOpen]);
 
   // Close menu when route changes
@@ -69,38 +69,44 @@ const About = () => {
   // Color palette matching Home page
   const colors = {
     primary: {
-      50: '#eef2ff',
-      100: '#e0e7ff',
-      200: '#c7d2fe',
-      300: '#a5b4fc',
-      400: '#818cf8',
-      500: '#6366f1',
-      600: '#4f46e5',
-      700: '#4338ca',
-      800: '#3730a3',
-      900: '#312e81',
+      50: "#eef2ff",
+      100: "#e0e7ff",
+      200: "#c7d2fe",
+      300: "#a5b4fc",
+      400: "#818cf8",
+      500: "#6366f1",
+      600: "#4f46e5",
+      700: "#4338ca",
+      800: "#3730a3",
+      900: "#312e81",
     },
     secondary: {
-      500: '#f59e0b',
-      600: '#d97706',
+      500: '#5d0bf5',
     },
-    success: '#10b981',
-    error: '#ef4444',
+    success: "#10b981",
+    error: "#ef4444",
     gray: {
-      50: '#f9fafb',
-      100: '#f3f4f6',
-      200: '#e5e7eb',
-      300: '#d1d5db',
-      400: '#9ca3af',
-      500: '#6b7280',
-      600: '#4b5563',
-      700: '#374151',
-      800: '#1f2937',
-      900: '#111827',
+      50: "#f9fafb",
+      100: "#f3f4f6",
+      200: "#e5e7eb",
+      300: "#d1d5db",
+      400: "#9ca3af",
+      500: "#6b7280",
+      600: "#4b5563",
+      700: "#374151",
+      800: "#1f2937",
+      900: "#111827",
+    },
+    background: "#ffffff",
+    card: "#ffffff",
+    text: {
+      primary: "#1f2937",
+      secondary: "#4b5563",
+      light: "#6b7280",
     },
   };
 
-  // Navigation items - same as Home page
+  // Navigation items
   const tabItems = [
     { id: "home", label: "Home", path: "/" },
     { id: "about", label: "About", path: "/about" },
@@ -115,39 +121,48 @@ const About = () => {
       name: "John Architect",
       role: "Founder & Principal Architect",
       bio: "15+ years of experience in luxury residential and commercial projects.",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     },
     {
       name: "Sarah Designer",
       role: "Head of Interior Design",
       bio: "Award-winning interior designer specializing in modern minimalist spaces.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     },
     {
       name: "Michael Engineer",
       role: "Sustainable Design Lead",
       bio: "LEED certified professional focused on eco-friendly architecture.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    }
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    },
   ];
 
   const values = [
     { icon: "💡", title: "Innovation", desc: "Pushing boundaries with creative design solutions." },
     { icon: "🌱", title: "Sustainability", desc: "Committed to environmentally responsible architecture." },
     { icon: "✨", title: "Excellence", desc: "Delivering the highest quality in every project." },
-    { icon: "🤝", title: "Integrity", desc: "Building trust through transparency and honesty." }
+    { icon: "🤝", title: "Integrity", desc: "Building trust through transparency and honesty." },
   ];
+
+  // Function to check if a link is active
+  const isActiveLink = (path) => {
+    if (path === "/") {
+      return location.pathname === "/" || location.pathname === "/home";
+    }
+    return location.pathname === path;
+  };
 
   const styles = {
     page: {
-      fontFamily: "Open Sans ",
-      color: "#1e293b",
+      fontFamily: "Open Sans",
+      color: colors.text.primary,
       scrollBehavior: "smooth",
       overflowX: "hidden",
       width: "100%",
+      backgroundColor: colors.background,
     },
 
-    /* ---------- HEADER (Same as Home page) ---------- */
+    /* ---------- HEADER (Fixed with proper background) ---------- */
     header: {
       position: "fixed",
       top: 0,
@@ -155,15 +170,17 @@ const About = () => {
       right: 0,
       zIndex: 1000,
       padding: scrolled 
-        ? isMobile ? "12px 5%" : "12px 8%"
-        : isMobile ? "15px 5%" : "18px 8%",
+        ? (isMobile ? "12px 5%" : "12px 8%")
+        : (isMobile ? "15px 5%" : "18px 8%"),
       background: scrolled 
-        ? "rgba(15, 23, 42, 0.95)" 
-        : "linear-gradient(to bottom, rgba(0,0,0,0.8), transparent)",
-      backdropFilter: scrolled ? "blur(12px)" : "blur(4px)",
-      boxShadow: scrolled ? "0 10px 30px rgba(0,0,0,0.1)" : "none",
+        ? "rgba(255, 255, 255, 0.95)" 
+        : "#ffffff",
+      backdropFilter: scrolled ? "blur(12px)" : "none",
+      boxShadow: scrolled 
+        ? "0 4px 20px rgba(0, 0, 0, 0.08)" 
+        : "0 2px 10px rgba(0, 0, 0, 0.03)",
       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-      borderBottom: scrolled ? "1px solid rgba(255,255,255,0.1)" : "none",
+      borderBottom: "1px solid rgba(0, 0, 0, 0.05)",
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
@@ -172,14 +189,15 @@ const About = () => {
     logo: {
       fontSize: isMobile ? "22px" : "28px",
       fontWeight: "600",
-      color: "#fff",
-      letterSpacing: "1px",
+      color: "#12086F",
+      letterSpacing: "-0.5px",
       cursor: "pointer",
-      background: "linear-gradient(135deg, #fff 0%, #e2e8f0 100%)",
+      background: "linear-gradient(135deg, #12086F 0%, #12086F 100%)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
       transition: "0.3s",
       zIndex: 1001,
+      fontFamily: "Open Sans",
     },
 
     /* ---------- MOBILE MENU BUTTON ---------- */
@@ -199,14 +217,14 @@ const About = () => {
     menuBar: {
       width: "24px",
       height: "2px",
-      background: "#fff",
+      background: "#12086F",
       transition: "all 0.3s ease",
     },
 
     menuBar1: {
       width: "24px",
       height: "2px",
-      background: "#fff",
+      background: "#12086F",
       transition: "all 0.3s ease",
       transform: menuOpen ? "rotate(45deg) translate(6px, 6px)" : "none",
     },
@@ -214,7 +232,7 @@ const About = () => {
     menuBar2: {
       width: "24px",
       height: "2px",
-      background: "#fff",
+      background: "#12086F",
       transition: "all 0.3s ease",
       opacity: menuOpen ? 0 : 1,
     },
@@ -222,12 +240,12 @@ const About = () => {
     menuBar3: {
       width: "24px",
       height: "2px",
-      background: "#fff",
+      background: "#12086F",
       transition: "all 0.3s ease",
       transform: menuOpen ? "rotate(-45deg) translate(6px, -6px)" : "none",
     },
 
-    /* ---------- NAVIGATION MENU (Same as Home page) ---------- */
+    /* ---------- DESKTOP NAVIGATION ---------- */
     desktopNav: {
       display: isMobile ? "none" : "flex",
       gap: isTablet ? "15px" : "30px",
@@ -235,7 +253,7 @@ const About = () => {
     },
 
     desktopNavLink: {
-      color: "rgba(255,255,255,0.7)",
+      color: colors.gray[600],
       textDecoration: "none",
       fontSize: "15px",
       fontWeight: "600",
@@ -243,47 +261,50 @@ const About = () => {
       borderRadius: "40px",
       transition: "all 0.3s ease",
       letterSpacing: "0.5px",
+      cursor: "pointer",
+      fontFamily: "Open Sans",
     },
 
     activeDesktopNavLink: {
-      background: "linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)",
-      color: "#fff",
-      boxShadow: "0 10px 25px rgba(56, 189, 248, 0.3)",
+      background: "linear-gradient(135deg, #12086F 0%, #4338ca 100%)",
+      color: "#fff !important",
+      boxShadow: "0 10px 25px rgba(18, 8, 111, 0.3)",
     },
 
+    /* ---------- MOBILE MENU ---------- */
     mobileMenu: {
       position: "fixed",
       top: isMobile ? "70px" : "80px",
       left: 0,
       right: 0,
-      background: "rgba(15, 23, 42, 0.98)",
+      background: "rgba(255, 255, 255, 0.98)",
       backdropFilter: "blur(10px)",
       padding: "30px 20px",
       transform: menuOpen ? "translateY(0)" : "translateY(-150%)",
       transition: "transform 0.3s ease",
       zIndex: 999,
-      boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
+      boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
     },
 
     mobileNavLink: {
       display: "block",
-      color: "#fff",
+      color: colors.gray[800],
       textDecoration: "none",
       fontSize: "18px",
       fontWeight: "600",
       padding: "15px 0",
-      borderBottom: "1px solid rgba(255,255,255,0.1)",
+      borderBottom: `1px solid ${colors.gray[200]}`,
       transition: "color 0.3s ease",
       textAlign: "center",
+      fontFamily: "Open Sans",
     },
-    
 
     /* ---------- HERO SECTION ---------- */
     heroSection: {
       position: "relative",
       height: isMobile ? "100vh" : "80vh",
       minHeight: isMobile ? "600px" : "700px",
-      backgroundImage: `linear-gradient(135deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.7) 100%), url(${aboutImage})`,
+      backgroundImage: `linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.85) 100%), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')`,
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundAttachment: isMobile ? "scroll" : "fixed",
@@ -291,7 +312,7 @@ const About = () => {
       alignItems: "center",
       justifyContent: "center",
       textAlign: "center",
-      color: "#fff",
+      color: colors.text.primary,
     },
 
     heroContent: {
@@ -304,16 +325,17 @@ const About = () => {
     heroBadge: {
       display: "inline-block",
       padding: isMobile ? "6px 16px" : "8px 20px",
-      background: "rgba(56, 189, 248, 0.2)",
+      background: "rgba(18, 8, 111, 0.1)",
       backdropFilter: "blur(10px)",
-      border: "1px solid rgba(56, 189, 248, 0.5)",
+      border: "1px solid rgba(18, 8, 111, 0.3)",
       borderRadius: "50px",
       fontSize: isMobile ? "12px" : "14px",
       fontWeight: "600",
       letterSpacing: "2px",
       textTransform: "uppercase",
       marginBottom: isMobile ? "20px" : "24px",
-      color: "#fff",
+      color: "#12086F",
+      fontFamily: "Open Sans",
     },
 
     heroTitle: {
@@ -321,22 +343,23 @@ const About = () => {
       fontWeight: "600",
       marginBottom: isMobile ? "20px" : "24px",
       lineHeight: "1.2",
-      textShadow: "0 4px 20px rgba(0,0,0,0.2)",
+      fontFamily: "Open Sans",
     },
 
     heroTitleHighlight: {
-      background: "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)",
+      background: "linear-gradient(135deg, #12086F 0%, #12086F 100%)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
     },
 
     heroSubtitle: {
       fontSize: isMobile ? "16px" : "clamp(18px, 4vw, 20px)",
-      opacity: 0.95,
+      opacity: 0.8,
       lineHeight: isMobile ? "1.6" : "1.8",
-      color: "rgba(255,255,255,0.9)",
+      color: colors.text.secondary,
       maxWidth: "600px",
       margin: "0 auto",
+      fontFamily: "Open Sans",
     },
 
     scrollHint: {
@@ -344,7 +367,7 @@ const About = () => {
       bottom: "30px",
       left: "50%",
       transform: "translateX(-50%)",
-      color: "#fff",
+      color: colors.text.light,
       fontSize: "14px",
       display: "flex",
       flexDirection: "column",
@@ -352,12 +375,13 @@ const About = () => {
       gap: "8px",
       opacity: showScrollHint ? 1 : 0,
       transition: "opacity 0.3s ease",
+      fontFamily: "Open Sans",
     },
 
     scrollArrow: {
       width: "30px",
       height: "50px",
-      border: "2px solid rgba(255,255,255,0.3)",
+      border: `2px solid ${colors.gray[300]}`,
       borderRadius: "25px",
       position: "relative",
     },
@@ -365,7 +389,7 @@ const About = () => {
     scrollDot: {
       width: "6px",
       height: "10px",
-      background: "#fff",
+      background: "#12086F",
       borderRadius: "3px",
       position: "absolute",
       top: "8px",
@@ -377,7 +401,7 @@ const About = () => {
     /* ---------- ABOUT SECTION ---------- */
     aboutSection: {
       padding: isMobile ? "60px 20px" : "120px 10%",
-      backgroundColor: "#ffffff",
+      backgroundColor: colors.background,
     },
 
     aboutContainer: {
@@ -385,13 +409,15 @@ const About = () => {
       gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
       gap: isMobile ? "30px" : "60px",
       alignItems: "center",
+      maxWidth: "1400px",
+      margin: "0 auto",
     },
 
     aboutImageBox: {
       position: "relative",
       borderRadius: isMobile ? "20px" : "30px",
       overflow: "hidden",
-      boxShadow: "0 30px 60px rgba(0,0,0,0.1)",
+      boxShadow: "0 30px 60px rgba(0,0,0,0.08)",
       maxHeight: isMobile ? "400px" : "none",
     },
 
@@ -408,7 +434,7 @@ const About = () => {
       left: 0,
       right: 0,
       bottom: 0,
-      background: "linear-gradient(135deg, rgba(56,189,248,0.2) 0%, rgba(129,140,248,0.2) 100%)",
+      background: "linear-gradient(135deg, rgba(18,8,111,0.05) 0%, rgba(67,56,202,0.05) 100%)",
     },
 
     experienceBadge: {
@@ -418,21 +444,23 @@ const About = () => {
       background: "white",
       padding: isMobile ? "12px" : "24px",
       borderRadius: isMobile ? "15px" : "20px",
-      boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+      boxShadow: "0 20px 40px rgba(0,0,0,0.08)",
       textAlign: "center",
     },
 
     experienceNumber: {
       fontSize: isMobile ? "24px" : "36px",
       fontWeight: "600",
-      color: "#0284c7",
+      color: "#12086F",
       lineHeight: "1",
+      fontFamily: "Open Sans",
     },
 
     experienceText: {
       fontSize: isMobile ? "10px" : "14px",
-      color: "#475569",
+      color: colors.text.light,
       marginTop: "3px",
+      fontFamily: "Open Sans",
     },
 
     aboutContent: {
@@ -442,14 +470,15 @@ const About = () => {
     sectionBadge: {
       display: "inline-block",
       padding: isMobile ? "4px 12px" : "6px 16px",
-      background: "linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%)",
+      background: "#eef2ff",
       borderRadius: "50px",
       fontSize: isMobile ? "12px" : "13px",
       fontWeight: "600",
-      color: "#0369a1",
+      color: "#12086F",
       marginBottom: isMobile ? "15px" : "20px",
       textTransform: "uppercase",
       letterSpacing: "1px",
+      fontFamily: "Open Sans",
     },
 
     heading: {
@@ -457,20 +486,22 @@ const About = () => {
       fontWeight: "600",
       marginBottom: isMobile ? "15px" : "24px",
       lineHeight: "1.3",
-      color: "#0f172a",
+      color: colors.text.primary,
+      fontFamily: "Open Sans",
     },
 
     headingHighlight: {
-      color: "#0284c7",
-      borderBottom: isMobile ? "3px solid #38bdf8" : "4px solid #38bdf8",
+      color: "#12086F",
+      borderBottom: isMobile ? "3px solid #12086F" : "4px solid #12086F",
       paddingBottom: "4px",
     },
 
     text: {
       fontSize: isMobile ? "15px" : "17px",
       lineHeight: "1.8",
-      color: "#475569",
+      color: colors.text.secondary,
       marginBottom: "20px",
+      fontFamily: "Open Sans",
     },
 
     statsGrid: {
@@ -487,20 +518,22 @@ const About = () => {
     statNumber: {
       fontSize: isMobile ? "24px" : "32px",
       fontWeight: "600",
-      color: "#0284c7",
+      color: "#12086F",
       marginBottom: "4px",
+      fontFamily: "Open Sans",
     },
 
     statLabel: {
       fontSize: isMobile ? "11px" : "14px",
-      color: "#64748b",
+      color: colors.text.light,
       fontWeight: "600",
+      fontFamily: "Open Sans",
     },
 
-    /* ---------- TABS SECTION (Fixed with skyblue background) ---------- */
+    /* ---------- TABS SECTION ---------- */
     tabsSection: {
       padding: isMobile ? "50px 20px" : "80px 10%",
-      backgroundColor: "#f8fafc",
+      backgroundColor: colors.gray[50],
     },
 
     tabsContainer: {
@@ -518,17 +551,18 @@ const About = () => {
       borderRadius: "50px",
       fontSize: isMobile ? "15px" : "16px",
       fontWeight: "600",
-      color: "#64748b",
+      color: colors.text.light,
       cursor: "pointer",
       transition: "all 0.3s ease",
-      border: "2px solid transparent",
+      border: `2px solid transparent`,
       whiteSpace: "nowrap",
+      fontFamily: "Open Sans",
     },
 
     activeTab: {
-      background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
+      background: "linear-gradient(135deg, #12086F 0%, #4338ca 100%)",
       color: "#fff",
-      boxShadow: "0 10px 25px rgba(56, 189, 248, 0.3)",
+      boxShadow: "0 10px 25px rgba(18, 8, 111, 0.3)",
     },
 
     tabContent: {
@@ -544,34 +578,39 @@ const About = () => {
       fontSize: isMobile ? "22px" : "28px",
       fontWeight: "600",
       marginBottom: isMobile ? "15px" : "20px",
-      color: "#0f172a",
+      color: colors.text.primary,
+      fontFamily: "Open Sans",
     },
 
     tabText: {
       fontSize: isMobile ? "15px" : "17px",
       lineHeight: "1.8",
-      color: "#475569",
+      color: colors.text.secondary,
+      fontFamily: "Open Sans",
     },
 
     /* ---------- MISSION VISION SECTION ---------- */
     missionVisionSection: {
       padding: isMobile ? "50px 20px" : "100px 10%",
-      backgroundColor: "#ffffff",
+      // backgroundColor: colors.background,
     },
 
     missionVisionGrid: {
       display: "grid",
       gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
       gap: isMobile ? "20px" : "40px",
+      maxWidth: "1200px",
+      margin: "0 auto",
     },
 
     missionCard: {
-      background: "linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)",
+      background: colors.background,
       padding: isMobile ? "30px 20px" : "48px 32px",
       borderRadius: isMobile ? "20px" : "30px",
-      boxShadow: "0 20px 40px rgba(0,0,0,0.02)",
+      boxShadow: "0 20px 40px rgba(0,0,0,0.05)",
       transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
       textAlign: "center",
+      border: `1px solid ${colors.gray[200]}`,
     },
 
     missionIcon: {
@@ -579,28 +618,30 @@ const About = () => {
       marginBottom: "20px",
       display: "inline-block",
       padding: isMobile ? "12px" : "16px",
-      background: "white",
+      background: colors.gray[50],
       borderRadius: "20px",
-      boxShadow: "0 10px 25px rgba(0,0,0,0.05)",
+      boxShadow: "0 10px 25px rgba(0,0,0,0.02)",
     },
 
     missionHeading: {
       fontSize: isMobile ? "24px" : "28px",
       fontWeight: "600",
       marginBottom: "15px",
-      color: "#0f172a",
+      color:"#12086F",
+      fontFamily: "Open Sans",
     },
 
     missionText: {
       fontSize: isMobile ? "14px" : "16px",
       lineHeight: "1.8",
-      color: "#475569",
+      color: colors.text.secondary,
+      fontFamily: "Open Sans",
     },
 
     /* ---------- TEAM SECTION ---------- */
     teamSection: {
       padding: isMobile ? "50px 20px" : "100px 10%",
-      backgroundColor: "#f8fafc",
+      backgroundColor: colors.gray[50],
     },
 
     teamGrid: {
@@ -608,14 +649,17 @@ const About = () => {
       gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(280px, 1fr))",
       gap: isMobile ? "25px" : "40px",
       marginTop: "40px",
+      maxWidth: "1200px",
+      margin: "40px auto 0",
     },
 
     teamCard: {
-      background: "white",
+      // background: colors.background,
       borderRadius: isMobile ? "20px" : "30px",
       overflow: "hidden",
-      boxShadow: "0 20px 40px rgba(0,0,0,0.03)",
+      boxShadow: "0 20px 40px rgba(0,0,0,0.05)",
       transition: "all 0.4s ease",
+      border: `1px solid ${colors.gray[200]}`,
     },
 
     teamImage: {
@@ -633,28 +677,31 @@ const About = () => {
     teamName: {
       fontSize: isMobile ? "20px" : "22px",
       fontWeight: "600",
-      color: "#0f172a",
+      color: colors.text.primary,
       marginBottom: "5px",
+      fontFamily: "Open Sans",
     },
 
     teamRole: {
       fontSize: isMobile ? "14px" : "15px",
-      color: "#0284c7",
+      color: "#12086F",
       fontWeight: "600",
       marginBottom: "12px",
+      fontFamily: "Open Sans",
     },
 
     teamBio: {
       fontSize: isMobile ? "13px" : "14px",
-      color: "#64748b",
+      color: colors.text.light,
       lineHeight: "1.7",
+      fontFamily: "Open Sans",
     },
 
     /* ---------- VALUES SECTION ---------- */
     valuesSection: {
       padding: isMobile ? "50px 20px" : "100px 10%",
-      background: "linear-gradient(135deg, #a6a7a7 0%, #adaeaf 100%)",
-      color: "#fff",
+      background: "linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%)",
+      color: colors.text.secondary,
     },
 
     valuesGrid: {
@@ -662,16 +709,18 @@ const About = () => {
       gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(250px, 1fr))",
       gap: isMobile ? "20px" : "40px",
       marginTop: "40px",
+      maxWidth: "1200px",
+      margin: "40px auto 0",
     },
 
     valueCard: {
       textAlign: "center",
       padding: isMobile ? "30px 20px" : "40px 24px",
-      background: "rgba(174, 98, 98, 0.77)",
-      backdropFilter: "blur(10px)",
+      background: colors.background,
       borderRadius: isMobile ? "20px" : "30px",
-      border: "1px solid rgba(255,255,255,0.05)",
+      border: `1px solid ${colors.gray[200]}`,
       transition: "0.4s",
+      boxShadow: "0 10px 25px rgba(0,0,0,0.02)",
     },
 
     valueIcon: {
@@ -683,21 +732,23 @@ const About = () => {
       fontSize: isMobile ? "20px" : "22px",
       fontWeight: "600",
       marginBottom: "12px",
-      color: "#fff",
+      color: "#12086F",
+      fontFamily: "Open Sans",
     },
 
     valueDesc: {
       fontSize: isMobile ? "13px" : "15px",
-      color: "rgba(255,255,255,0.8)",
+      color: colors.text.secondary,
       lineHeight: "1.7",
+      fontFamily: "Open Sans",
     },
 
     /* ---------- CTA SECTION ---------- */
     ctaSection: {
       padding: isMobile ? "50px 20px" : "80px 10%",
-      background: "linear-gradient(135deg, #5b5f61 0%, #717272 100%)",
+      // background: "linear-gradient(135deg, #12086F 0%,  #12086F 100%)",
       textAlign: "center",
-      color: "#fff",
+      color: "#12086F",
     },
 
     ctaTitle: {
@@ -705,12 +756,13 @@ const About = () => {
       fontWeight: "600",
       marginBottom: "15px",
       lineHeight: "1.3",
+      fontFamily: "Open Sans",
     },
 
     ctaBtn: {
       padding: isMobile ? "14px 32px" : "16px 48px",
-      background: "#fff",
-      color: "#0284c7",
+      background: "#767474",
+      color: "#12086F",
       border: "none",
       borderRadius: "50px",
       fontSize: isMobile ? "15px" : "16px",
@@ -721,13 +773,15 @@ const About = () => {
       marginTop: "20px",
       width: isMobile ? "100%" : "auto",
       maxWidth: isMobile ? "280px" : "none",
+      fontFamily: "Open Sans",
     },
 
     /* ---------- FOOTER ---------- */
     footer: {
-      background: "#0f172a",
-      color: "#fff",
+      background: "#e9ebec",
+      color: colors.text.secondary,
       padding: isMobile ? "40px 20px 20px" : "60px 10% 30px",
+      borderTop: `1px solid ${colors.gray[200]}`,
     },
 
     footerContent: {
@@ -735,6 +789,8 @@ const About = () => {
       gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(250px, 1fr))",
       gap: isMobile ? "30px" : "60px",
       marginBottom: "30px",
+      maxWidth: "1200px",
+      margin: "0 auto 30px",
       textAlign: isMobile ? "center" : "left",
     },
 
@@ -742,37 +798,51 @@ const About = () => {
       fontSize: isMobile ? "26px" : "28px",
       fontWeight: "600",
       marginBottom: "15px",
-      background: "linear-gradient(135deg, #fff 0%, #94a3b8 100%)",
+      background: "linear-gradient(135deg, #362b57 0%, #393658 100%)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
+      display: "inline-block",
+      fontFamily: "Open Sans",
+    },
+
+    footerHeading: {
+      fontSize: isMobile ? "18px" : "20px",
+      fontWeight: "600",
+      marginBottom: isMobile ? "15px" : "20px",
+      color: colors.text.primary,
+      fontFamily: "Open Sans",
     },
 
     footerLink: {
-      color: "rgba(255,255,255,0.7)",
+      color: colors.text.light,
       textDecoration: "none",
       display: "block",
       marginBottom: "10px",
       transition: "0.3s",
       fontSize: isMobile ? "14px" : "16px",
+      fontFamily: "Open Sans",
     },
 
     copyright: {
       textAlign: "center",
       paddingTop: "20px",
-      borderTop: "1px solid rgba(255,255,255,0.1)",
-      color: "rgba(255,255,255,0.6)",
+      borderTop: `1px solid ${colors.gray[200]}`,
+      color: colors.text.light,
       fontSize: isMobile ? "12px" : "14px",
+      maxWidth: "1200px",
+      margin: "0 auto",
+      fontFamily: "Open Sans",
     },
   };
 
   return (
     <div style={styles.page}>
-      {/* HEADER - Same as Home page */}
+      {/* HEADER */}
       <header style={styles.header}>
         <div style={styles.logo} onClick={() => navigate("/")}>
           ARCTITECH
         </div>
-        
+
         {/* Desktop Navigation */}
         <nav style={styles.desktopNav}>
           {tabItems.map((item) => (
@@ -781,18 +851,18 @@ const About = () => {
               to={item.path}
               style={{
                 ...styles.desktopNavLink,
-                ...(location.pathname === item.path ? styles.activeDesktopNavLink : {})
+                ...(isActiveLink(item.path) ? styles.activeDesktopNavLink : {}),
               }}
               onMouseEnter={(e) => {
-                if (!isMobile && location.pathname !== item.path) {
-                  e.target.style.background = "rgba(255,255,255,0.1)";
-                  e.target.style.color = "#fff";
+                if (!isMobile && !isActiveLink(item.path)) {
+                  e.target.style.background = colors.gray[100];
+                  e.target.style.color = "#12086F";
                 }
               }}
               onMouseLeave={(e) => {
-                if (!isMobile && location.pathname !== item.path) {
+                if (!isMobile && !isActiveLink(item.path)) {
                   e.target.style.background = "transparent";
-                  e.target.style.color = "rgba(255,255,255,0.7)";
+                  e.target.style.color = colors.gray[600];
                 }
               }}
             >
@@ -802,11 +872,7 @@ const About = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button 
-          className="menu-btn"
-          style={styles.menuBtn}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
+        <button className="menu-btn" style={styles.menuBtn} onClick={() => setMenuOpen(!menuOpen)}>
           <div style={menuOpen ? styles.menuBar1 : styles.menuBar}></div>
           <div style={menuOpen ? styles.menuBar2 : styles.menuBar}></div>
           <div style={menuOpen ? styles.menuBar3 : styles.menuBar}></div>
@@ -816,10 +882,13 @@ const About = () => {
       {/* Mobile Menu */}
       <div className="mobile-menu" style={styles.mobileMenu}>
         {tabItems.map((item) => (
-          <Link
-            key={item.id}
-            to={item.path}
-            style={styles.mobileNavLink}
+          <Link 
+            key={item.id} 
+            to={item.path} 
+            style={{
+              ...styles.mobileNavLink,
+              ...(isActiveLink(item.path) ? { color: "#12086F", fontWeight: "700" } : {})
+            }} 
             onClick={() => setMenuOpen(false)}
           >
             {item.label}
@@ -837,11 +906,10 @@ const About = () => {
             That Inspire
           </h1>
           <p style={styles.heroSubtitle}>
-            A team of passionate architects dedicated to creating timeless,
-            sustainable, and innovative designs.
+            A team of passionate architects dedicated to creating timeless, sustainable, and innovative designs.
           </p>
         </div>
-        
+
         {/* Scroll Hint */}
         {showScrollHint && (
           <div style={styles.scrollHint}>
@@ -857,11 +925,7 @@ const About = () => {
       <section style={styles.aboutSection}>
         <div style={styles.aboutContainer}>
           <div style={styles.aboutImageBox}>
-            <img
-              src={aboutImage}
-              alt="Architecture Building"
-              style={styles.image}
-            />
+            <img src={aboutImage} alt="Architecture Building" style={styles.image} />
             <div style={styles.imageOverlay}></div>
             <div style={styles.experienceBadge}>
               <div style={styles.experienceNumber}>15+</div>
@@ -875,10 +939,8 @@ const About = () => {
               We Design <span style={styles.headingHighlight}>Future-Ready</span> Architecture
             </h2>
             <p style={styles.text}>
-              Arctitech is a modern architectural design company focused on
-              innovation, sustainability, and timeless aesthetics. We create 
-              residential, commercial, and urban spaces that combine functionality 
-              with beauty.
+              Arctitech is a modern architectural design company focused on innovation, sustainability, and timeless
+              aesthetics. We create residential, commercial, and urban spaces that combine functionality with beauty.
             </p>
             <div style={styles.statsGrid}>
               <div style={styles.statItem}>
@@ -898,31 +960,31 @@ const About = () => {
         </div>
       </section>
 
-      {/* TABS SECTION - Fixed with skyblue background on active tab */}
+      {/* TABS SECTION */}
       <section style={styles.tabsSection} ref={tabsRef}>
         <div style={styles.tabsContainer}>
           {[
             { id: "story", label: "Story" },
             { id: "approach", label: "Approach" },
-            { id: "philosophy", label: "Philosophy" }
+            { id: "philosophy", label: "Philosophy" },
           ].map((tab) => (
             <button
               key={tab.id}
               style={{
                 ...styles.tab,
-                ...(activeTab === tab.id ? styles.activeTab : {})
+                ...(activeTab === tab.id ? styles.activeTab : {}),
               }}
               onClick={() => setActiveTab(tab.id)}
               onMouseEnter={(e) => {
                 if (!isMobile && activeTab !== tab.id) {
-                  e.target.style.background = "rgba(56, 189, 248, 0.1)";
-                  e.target.style.color = "#0284c7";
+                  e.target.style.background = colors.gray[100];
+                  e.target.style.color = "#12086F";
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isMobile && activeTab !== tab.id) {
                   e.target.style.background = "transparent";
-                  e.target.style.color = "#64748b";
+                  e.target.style.color = colors.text.light;
                 }
               }}
             >
@@ -936,10 +998,9 @@ const About = () => {
             <>
               <h3 style={styles.tabTitle}>Our Story</h3>
               <p style={styles.tabText}>
-                Founded in 2010, Arctitech began with a vision to transform 
-                the architectural landscape. What started as a small studio 
-                has grown into an internationally recognized practice with 
-                projects spanning residential, commercial, and urban development.
+                Founded in 2010, Arctitech began with a vision to transform the architectural landscape. What started as
+                a small studio has grown into an internationally recognized practice with projects spanning residential,
+                commercial, and urban development.
               </p>
             </>
           )}
@@ -947,10 +1008,9 @@ const About = () => {
             <>
               <h3 style={styles.tabTitle}>Our Approach</h3>
               <p style={styles.tabText}>
-                We believe in collaborative design process, working closely 
-                with clients to understand their vision and needs. Every 
-                project combines technical innovation with artistic expression, 
-                ensuring spaces that are both functional and beautiful.
+                We believe in collaborative design process, working closely with clients to understand their vision and
+                needs. Every project combines technical innovation with artistic expression, ensuring spaces that are
+                both functional and beautiful.
               </p>
             </>
           )}
@@ -958,10 +1018,8 @@ const About = () => {
             <>
               <h3 style={styles.tabTitle}>Our Philosophy</h3>
               <p style={styles.tabText}>
-                Architecture should enhance human experience. We create spaces 
-                that inspire and elevate the human spirit while respecting 
-                our environment. Good design balances aesthetics, functionality, 
-                and sustainability.
+                Architecture should enhance human experience. We create spaces that inspire and elevate the human spirit
+                while respecting our environment. Good design balances aesthetics, functionality, and sustainability.
               </p>
             </>
           )}
@@ -975,8 +1033,7 @@ const About = () => {
             <div style={styles.missionIcon}>🎯</div>
             <h3 style={styles.missionHeading}>Our Mission</h3>
             <p style={styles.missionText}>
-              To design inspiring spaces that enhance lives through sustainable,
-              elegant, and future-ready architecture.
+              To design inspiring spaces that enhance lives through sustainable, elegant, and future-ready architecture.
             </p>
           </div>
 
@@ -984,8 +1041,8 @@ const About = () => {
             <div style={styles.missionIcon}>👁️</div>
             <h3 style={styles.missionHeading}>Our Vision</h3>
             <p style={styles.missionText}>
-              To be recognized globally as pioneers of sustainable and innovative
-              architecture, creating landmarks that stand the test of time.
+              To be recognized globally as pioneers of sustainable and innovative architecture, creating landmarks that
+              stand the test of time.
             </p>
           </div>
         </div>
@@ -993,10 +1050,10 @@ const About = () => {
 
       {/* VALUES SECTION */}
       <section style={styles.valuesSection}>
-        <h2 style={{ textAlign: "center", fontSize: isMobile ? "28px" : "36px", marginBottom: "15px", color: "#fff" }}>
+        <h2 style={{...styles.heading,color:"#12086F"}}>
           Our Core Values
         </h2>
-        <p style={{ textAlign: "center", color: "rgba(255,255,255,0.8)", maxWidth: "600px", margin: "0 auto 30px", fontSize: isMobile ? "15px" : "16px" }}>
+        <p style={styles.text}>
           The principles that guide every project
         </p>
         <div style={styles.valuesGrid}>
@@ -1012,10 +1069,10 @@ const About = () => {
 
       {/* TEAM SECTION */}
       <section style={styles.teamSection}>
-        <h2 style={{ textAlign: "center", fontSize: isMobile ? "28px" : "36px", marginBottom: "15px" }}>
+        <h2 style={{...styles.heading,color:"#12086F"}}>
           Meet Our Team
         </h2>
-        <p style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto 30px", fontSize: isMobile ? "15px" : "16px" }}>
+        <p style={styles.text}>
           Passionate architects dedicated to excellence
         </p>
         <div style={styles.teamGrid}>
@@ -1035,7 +1092,7 @@ const About = () => {
       {/* CTA SECTION */}
       <section style={styles.ctaSection}>
         <h2 style={styles.ctaTitle}>Ready to Bring Your Vision to Life?</h2>
-        <p style={{ fontSize: isMobile ? "16px" : "18px", opacity: 0.95, marginBottom: "20px" }}>
+        <p style={{ fontSize: isMobile ? "16px" : "18px", opacity: 0.95, marginBottom: "20px", fontFamily: "Open Sans" }}>
           Let's discuss your next project.
         </p>
         <button
@@ -1044,13 +1101,11 @@ const About = () => {
           onMouseEnter={(e) => {
             if (!isMobile) {
               e.target.style.transform = "translateY(-2px) scale(1.05)";
-              e.target.style.background = "#f8fafc";
             }
           }}
           onMouseLeave={(e) => {
             if (!isMobile) {
               e.target.style.transform = "translateY(0) scale(1)";
-              e.target.style.background = "#fff";
             }
           }}
         >
@@ -1060,138 +1115,55 @@ const About = () => {
 
       {/* FOOTER */}
       <footer style={styles.footer}>
-        <div style={styles.footerContent}>
-          <div>
-            <div style={styles.footerLogo}>ARCTITECH</div>
-            <p style={{ color: "rgba(255,255,255,0.7)", lineHeight: "1.7", fontSize: isMobile ? "14px" : "16px" }}>
-              Creating timeless architecture that inspires.
-            </p>
-          </div>
-          <div>
-            <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "20px", fontSize: isMobile ? "18px" : "20px" }}>Quick Links</h4>
-            <Link to="/" style={styles.footerLink}>Home</Link>
-            <Link to="/services" style={styles.footerLink}>Services</Link>
-            <Link to="/project" style={styles.footerLink}>Projects</Link>
-            <Link to="/contact" style={styles.footerLink}>Contact</Link>
-            <Link to="/appointment" style={styles.footerLink}>Appointment</Link>
-          </div>
-           <div>
-                      <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Legal</h4>
-                      <Link to="/PrivacyPolicy" style={styles.footerLink}>Privacy Policy</Link>
-                      <Link to="/TearmsCondition" style={styles.footerLink}>Terms of Service</Link>
-                    </div>
-          <div>
-            <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "20px", fontSize: isMobile ? "18px" : "20px" }}>Contact</h4>
-            <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: "8px", fontSize: isMobile ? "14px" : "16px" }}>
-              contact@arctitech.com
-            </p>
-            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: isMobile ? "14px" : "16px" }}>+1 (555) 123-4567</p>
-          </div>
-        </div>
-        <div style={styles.copyright}>
-          © {new Date().getFullYear()} ARCTITECH. All rights reserved.
-        </div>
-      </footer>
-
-      {/* Global Styles */}
-      <style>
-        {`
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-
-          @keyframes scrollDown {
-            0% {
-              opacity: 1;
-              transform: translateX(-50%) translateY(0);
-            }
-            75% {
-              opacity: 0;
-              transform: translateX(-50%) translateY(20px);
-            }
-            100% {
-              opacity: 0;
-              transform: translateX(-50%) translateY(20px);
-            }
-          }
-
-          @keyframes float {
-            0% {
-              transform: translateY(0px);
-            }
-            50% {
-              transform: translateY(-10px);
-            }
-            100% {
-              transform: translateY(0px);
-            }
-          }
-
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-
-          body {
-            overflow-x: hidden;
-            width: 100%;
-          }
-
-          a {
-            text-decoration: none;
-          }
-
-          button {
-            outline: none;
-            cursor: pointer;
-            border: none;
-          }
-
-          img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-          }
-
-          a:hover {
-            color: #38bdf8 !important;
-          }
-
-          .menu-btn {
-            display: ${isMobile ? 'flex' : 'none'};
-          }
-
-          div[style*="missionCard"]:hover div[style*="missionIcon"] {
-            animation: float 3s ease infinite;
-          }
-
-          div[style*="teamCard"]:hover img {
-            transform: scale(1.05);
-          }
-
-          div[style*="valueCard"]:hover {
-            transform: translateY(-8px);
-            background: rgba(255,255,255,0.08);
-          }
-        `}
-      </style>
+              <div style={styles.footerContent}>
+                <div>
+                  <div style={styles.footerLogo}>ARCTITECH</div>
+                  <p style={styles.footerText}>
+                    Creating timeless architecture that inspires and transforms spaces into extraordinary experiences.
+                  </p>
+                </div>
+                
+                <div>
+                  <h4 style={styles.footerHeading}>Quick Links</h4>
+                  <Link to="/about" style={styles.footerLink}>About Us</Link>
+                  <Link to="/services" style={styles.footerLink}>Services</Link>
+                  <Link to="/project" style={styles.footerLink}>Projects</Link>
+                  <Link to="/contact" style={styles.footerLink}>Contact</Link>
+                  <Link to="/appointment" style={styles.footerLink}>Appointment</Link>
+                </div>
+                
+                <div>
+                  <h4 style={styles.footerHeading}>Legal</h4>
+                  <Link to="/PrivacyPolicy" style={styles.footerLink}>Privacy Policy</Link>
+                  <Link to="/TearmsCondition" style={styles.footerLink}>Terms of Service</Link>
+                </div>
+                
+                <div>
+                  <h4 style={styles.footerHeading}>Contact Us</h4>
+                  <div style={styles.footerContactItem}>
+                    <span style={styles.footerContactIcon}>📍</span>
+                    <span>123 Architecture Ave, Design District, NY 10001</span>
+                  </div>
+                  <div style={styles.footerContactItem}>
+                    <span style={styles.footerContactIcon}>📧</span>
+                    <a href="mailto:contact@arctitech.com" style={{ color: "#4a5568", textDecoration: "none" }}>contact@arctitech.com</a>
+                  </div>
+                  <div style={styles.footerContactItem}>
+                    <span style={styles.footerContactIcon}>📞</span>
+                    <a href="tel:+15551234567" style={{ color: "#4a5568", textDecoration: "none" }}>+1 (555) 123-4567</a>
+                  </div>
+                  <div style={styles.footerContactItem}>
+                    <span style={styles.footerContactIcon}>🕒</span>
+                    <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div style={styles.copyright}>
+                © {new Date().getFullYear()} ARCTITECH. All rights reserved. | Crafted with for architecture
+              </div>
+            </footer>
+      
     </div>
   );
 };

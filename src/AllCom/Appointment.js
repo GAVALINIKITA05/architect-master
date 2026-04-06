@@ -23,8 +23,6 @@ export default function Appointment() {
   const [hoveredFeature, setHoveredFeature] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [hoveredLink, setHoveredLink] = useState(null);
-  const [newsletterEmail, setNewsletterEmail] = useState('');
   const [scrolled, setScrolled] = useState(false);
 
   // Background image URL for header
@@ -116,7 +114,6 @@ export default function Appointment() {
       return "Full name is required";
     }
 
-    // Remove extra spaces and check length
     const trimmedName = name.trim();
     if (trimmedName.length < 2) {
       return "Name must be at least 2 characters";
@@ -126,31 +123,26 @@ export default function Appointment() {
       return "Name must be less than 50 characters";
     }
 
-    // Check for special characters - only allow letters, spaces, dots, hyphens, and apostrophes
     const nameRegex = /^[a-zA-Z\s.'-]+$/;
     if (!nameRegex.test(trimmedName)) {
       return "Name can only contain letters, spaces, dots, hyphens, and apostrophes";
     }
 
-    // Check if name contains any special characters like < > [ ] { } ( ) etc.
     const specialCharsRegex = /[<>[\]{}()@#$%^&*+=|\\/?!`~]/;
     if (specialCharsRegex.test(trimmedName)) {
       return "Name cannot contain special characters like < > [ ] { } ( ) @ # $ % ^ & *";
     }
 
-    // Check for at least two words (first and last name)
     const wordCount = trimmedName.split(/\s+/).length;
     if (wordCount < 2) {
       return "Please enter your full name (first and last name)";
     }
 
-    // Check each part of the name
     const nameParts = trimmedName.split(/\s+/);
     for (let part of nameParts) {
       if (part.length < 2) {
         return "Each part of the name must be at least 2 characters";
       }
-      // Check if part contains only valid characters
       const partRegex = /^[a-zA-Z.'-]+$/;
       if (!partRegex.test(part)) {
         return "Each part of the name can only contain letters, dots, hyphens, and apostrophes";
@@ -166,38 +158,31 @@ export default function Appointment() {
       return "Email address is required";
     }
 
-    // Basic format check
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return "Please enter a valid email address format";
     }
 
-    // Check if email ends with .com
     if (!email.toLowerCase().endsWith('.com')) {
       return "Only .com email addresses are accepted. Please use a Gmail, Yahoo, or other .com email.";
     }
 
-    // Extract domain
     const domain = email.split('@')[1].toLowerCase();
 
-    // Check if domain is exactly .com (not .co.in, .org, etc.)
     if (!domain.endsWith('.com')) {
       return "Email must end with .com";
     }
 
-    // Count dots in domain - should have exactly one dot for .com
     const dotCount = (domain.match(/\./g) || []).length;
     if (dotCount !== 1) {
       return "Only standard .com emails are accepted (e.g., name@gmail.com, not name@gmail.co.in)";
     }
 
-    // Check if domain has only one part before .com
     const domainParts = domain.split('.');
     if (domainParts.length !== 2) {
       return "Invalid domain format. Use provider.com format";
     }
 
-    // Check if domain part before .com is valid (at least 2 characters)
     if (domainParts[0].length < 2) {
       return "Domain name must be at least 2 characters";
     }
@@ -212,20 +197,16 @@ export default function Appointment() {
       return "Mobile number is required";
     }
 
-    // Remove all non-digit characters
     const cleanedPhone = phone.replace(/\D/g, '');
 
-    // Check if it's exactly 10 digits
     if (cleanedPhone.length !== 10) {
       return "Indian mobile number must be exactly 10 digits";
     }
 
-    // Check if it starts with 6,7,8,9 (valid Indian mobile prefixes)
     if (!/^[6-9]/.test(cleanedPhone)) {
       return "Indian mobile number must start with 6, 7, 8, or 9";
     }
 
-    // Check if all digits are the same (like 7777777777)
     if (/^(\d)\1{9}$/.test(cleanedPhone)) {
       return "Please enter a valid mobile number (cannot be all same digits)";
     }
@@ -292,7 +273,6 @@ export default function Appointment() {
     if (message && message.length > 500) {
       return "Message must be less than 500 characters";
     }
-    // Check for malicious content in message
     if (message) {
       const maliciousPatterns = /<script|javascript:|onerror=|onclick=|onload=/i;
       if (maliciousPatterns.test(message)) {
@@ -337,30 +317,25 @@ export default function Appointment() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Special handling for name field to prevent special characters on input
     if (name === "name") {
-      // Allow only letters, spaces, dots, hyphens, and apostrophes
-      // This prevents special characters like < > [ ] etc. from being typed
       const filteredValue = value.replace(/[<>[\]{}()@#$%^&*+=|\\/?!`~]/g, '');
       setFormData(prev => ({
         ...prev,
         [name]: filteredValue
       }));
     }
-    // Special handling for phone to only allow digits
     else if (name === "phone") {
       const digitsOnly = value.replace(/\D/g, '');
       setFormData(prev => ({
         ...prev,
-        [name]: digitsOnly.slice(0, 10) // Limit to 10 digits
+        [name]: digitsOnly.slice(0, 10)
       }));
     }
-    // Special handling for budget to only allow digits
     else if (name === "budget") {
       const digitsOnly = value.replace(/\D/g, '');
       setFormData(prev => ({
         ...prev,
-        [name]: digitsOnly.slice(0, 9) // Limit to 9 digits (max 10 crores)
+        [name]: digitsOnly.slice(0, 9)
       }));
     }
     else {
@@ -474,7 +449,6 @@ export default function Appointment() {
     setMobileMenuOpen(false);
   };
 
-  // Get email suggestion for common .com providers
   const getEmailSuggestion = (email) => {
     if (!email || email.includes('@') || email.length < 3) return null;
 
@@ -496,7 +470,6 @@ export default function Appointment() {
     }));
   };
 
-  // Format Indian currency
   const formatIndianCurrency = (amount) => {
     if (!amount) return "";
     const num = parseInt(amount);
@@ -511,7 +484,7 @@ export default function Appointment() {
   };
 
   const styles = {
-    /* ---------- FIXED HEADER WITH NAVIGATION ---------- */
+    /* ---------- FIXED HEADER WITH NAVIGATION - WHITE BACKGROUND ---------- */
     header: {
       position: "fixed",
       top: 0,
@@ -519,12 +492,12 @@ export default function Appointment() {
       right: 0,
       zIndex: 1000,
       background: scrolled
-        ? "rgba(15, 23, 42, 0.95)"
-        : "linear-gradient(to bottom, rgba(0,0,0,0.8), transparent)",
+        ? "rgba(255, 255, 255, 0.98)"
+        : "rgba(255, 255, 255, 0.95)",
       backdropFilter: scrolled ? "blur(12px)" : "blur(4px)",
       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-      borderBottom: scrolled ? "1px solid rgba(255,255,255,0.1)" : "none",
-      fontFamily: 'Open Sans',
+      borderBottom: scrolled ? "1px solid rgba(0,0,0,0.1)" : "1px solid rgba(0,0,0,0.08)",
+      fontFamily: "Open Sans",
     },
     headerContainer: {
       maxWidth: '1200px',
@@ -537,13 +510,13 @@ export default function Appointment() {
     logo: {
       fontSize: isMobile ? '24px' : '28px',
       fontWeight: '600',
-      background: `linear-gradient(135deg, ${colors.primary[400]}, ${colors.white})`,
+      background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
       cursor: 'pointer',
       letterSpacing: '-0.5px',
-      textShadow: '0 2px 4px rgba(0,0,0,0.1)',
-      fontFamily: 'Open Sans',
+      textShadow: '0 2px 4px rgba(0,0,0,0.05)',
+      fontFamily: "Open Sans",
     },
     /* ---------- DESKTOP NAVIGATION ---------- */
     navMenu: {
@@ -552,10 +525,11 @@ export default function Appointment() {
       alignItems: 'center',
     },
     navLink: {
-      color: colors.white,
+      color: "#0f172a",
       textDecoration: 'none',
       fontSize: isMobile ? '14px' : '16px',
       fontWeight: '600',
+      
       cursor: 'pointer',
       background: 'none',
       border: 'none',
@@ -564,15 +538,12 @@ export default function Appointment() {
       whiteSpace: 'nowrap',
       position: 'relative',
       borderRadius: '30px',
-      fontFamily: 'Open Sans',
+      fontFamily: "Open Sans",
     },
     navLinkActive: {
-      background: colors.skyblue,
-      color: colors.white,
+      background: "#12086F",
+      color: "#fff",
       boxShadow: '0 4px 12px rgba(56, 189, 248, 0.3)',
-    },
-    navLinkHover: {
-      color: colors.primary[400],
     },
     /* ---------- MOBILE MENU BUTTON (Three Lines) ---------- */
     mobileMenuButton: {
@@ -591,14 +562,14 @@ export default function Appointment() {
     menuBar: {
       width: '24px',
       height: '2px',
-      background: colors.white,
+      background: "#12086F",
       margin: '3px 0',
       transition: 'all 0.3s ease',
     },
     menuBar1: {
       width: '24px',
       height: '2px',
-      background: colors.white,
+      background: "#0f172a",
       margin: '3px 0',
       transition: 'all 0.3s ease',
       transform: mobileMenuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none',
@@ -606,7 +577,7 @@ export default function Appointment() {
     menuBar2: {
       width: '24px',
       height: '2px',
-      background: colors.white,
+      background: "#0f172a",
       margin: '3px 0',
       transition: 'all 0.3s ease',
       opacity: mobileMenuOpen ? 0 : 1,
@@ -614,7 +585,7 @@ export default function Appointment() {
     menuBar3: {
       width: '24px',
       height: '2px',
-      background: colors.white,
+      background: "#0f172a",
       margin: '3px 0',
       transition: 'all 0.3s ease',
       transform: mobileMenuOpen ? 'rotate(-45deg) translate(7px, -7px)' : 'none',
@@ -626,22 +597,22 @@ export default function Appointment() {
       top: isMobile ? '70px' : '80px',
       left: 0,
       right: 0,
-      background: 'rgba(15, 23, 42, 0.98)',
+      background: 'rgba(255, 255, 255, 0.98)',
       backdropFilter: 'blur(10px)',
       padding: '30px 20px',
       flexDirection: 'column',
       gap: '16px',
       zIndex: 999,
-      boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
-      borderBottom: `1px solid ${colors.gray[800]}`,
+      boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+      borderBottom: `1px solid ${colors.gray[200]}`,
     },
     mobileNavLink: {
-      color: 'rgba(255,255,255,0.7)',
+      color: "rgba(15, 23, 42, 0.7)",
       textDecoration: 'none',
       fontSize: '18px',
       fontWeight: '600',
       padding: '15px 0',
-      borderBottom: `1px solid ${colors.gray[800]}`,
+      borderBottom: `1px solid ${colors.gray[200]}`,
       cursor: 'pointer',
       background: 'none',
       border: 'none',
@@ -701,8 +672,9 @@ export default function Appointment() {
       fontFamily: 'Open Sans',
     },
     heroHighlight: {
-      color: colors.primary[400],
-      textShadow: '0 4px 20px rgba(99, 102, 241, 0.3)',
+      background: "linear-gradient(135deg, #38bdf8 0%, #818cf8 100%)",
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
     },
     heroSubtitle: {
       fontSize: isMobile ? '16px' : '18px',
@@ -740,7 +712,7 @@ export default function Appointment() {
       fontSize: isMobile ? '14px' : '16px',
       fontWeight: '600',
       color: colors.gray[700],
-      fontFamily: "'Open Sans'",
+      fontFamily: "Open Sans",
     },
     progressPercentage: {
       fontSize: isMobile ? '18px' : '20px',
@@ -1062,13 +1034,13 @@ export default function Appointment() {
     successTitle: {
       fontSize: isMobile ? '16px' : '18px',
       fontWeight: '600',
-      color: colors.gray[900],
+      color:'#12086F',
       marginBottom: '4px',
       fontFamily: 'Open Sans',
     },
     successText: {
       fontSize: isMobile ? '13px' : '14px',
-      color: colors.gray[600],
+      color:'#12086F',
       fontFamily: 'Open Sans',
     },
     /* ---------- FEATURES SECTION ---------- */
@@ -1084,7 +1056,7 @@ export default function Appointment() {
       textAlign: 'center',
       fontSize: isMobile ? '28px' : isTablet ? '32px' : '36px',
       fontWeight: '600',
-      color: colors.gray[900],
+      color: '#12086F',
       marginBottom: isMobile ? '12px' : '16px',
       fontFamily: 'Open Sans',
     },
@@ -1127,7 +1099,7 @@ export default function Appointment() {
     featureTitle: {
       fontSize: isMobile ? '18px' : '20px',
       fontWeight: '600',
-      color: colors.gray[900],
+      color:' #12086F',
       marginBottom: '12px',
       fontFamily: 'Open Sans',
     },
@@ -1139,10 +1111,9 @@ export default function Appointment() {
     },
     /* ---------- FOOTER ---------- */
     footer: {
-      backgroundColor: colors.black,
-      color: 'white',
+      backgroundColor: '#e9ebec',
+      color: '#121313',
       padding: isMobile ? '30px 16px 15px' : '60px 24px 30px',
-      borderTop: `1px solid ${colors.gray[800]}`,
       fontFamily: 'Open Sans',
     },
     footerContainer: {
@@ -1163,7 +1134,7 @@ export default function Appointment() {
       fontSize: isMobile ? '16px' : '20px',
       fontWeight: '600',
       marginBottom: isMobile ? '10px' : '20px',
-      color: colors.white,
+      color: '#0b0b0b',
       position: 'relative',
       paddingBottom: '6px',
       borderBottom: isMobile ? `1px solid ${colors.primary[600]}` : `2px solid ${colors.primary[600]}`,
@@ -1172,7 +1143,7 @@ export default function Appointment() {
       fontFamily: 'Open Sans',
     },
     footerText: {
-      color: colors.gray[400],
+      color: "#0c0c0c",
       lineHeight: '1.6',
       fontSize: isMobile ? '13px' : '15px',
       marginBottom: isMobile ? '12px' : '20px',
@@ -1187,7 +1158,7 @@ export default function Appointment() {
     },
     footerLink: {
       display: 'inline-block',
-      color: colors.gray[400],
+      color: "#0c0c0c",
       textDecoration: 'none',
       fontSize: isMobile ? '13px' : '15px',
       transition: 'all 0.3s ease',
@@ -1200,32 +1171,11 @@ export default function Appointment() {
       width: 'fit-content',
       fontFamily: 'Open Sans',
     },
-    footerSocial: {
-      display: 'flex',
-      gap: isMobile ? '12px' : '15px',
-      marginTop: isMobile ? '12px' : '15px',
-      flexWrap: 'wrap',
-      justifyContent: isMobile ? 'center' : 'flex-start',
-    },
-    socialIcon: {
-      width: isMobile ? '36px' : '40px',
-      height: isMobile ? '36px' : '40px',
-      borderRadius: '50%',
-      backgroundColor: colors.gray[800],
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: colors.white,
-      fontSize: isMobile ? '16px' : '18px',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      border: 'none',
-    },
     footerBottom: {
       paddingTop: isMobile ? '15px' : '30px',
       borderTop: `1px solid ${colors.gray[800]}`,
       textAlign: 'center',
-      color: colors.gray[500],
+      color: '#0a0a0b',
       fontSize: isMobile ? '11px' : '14px',
       display: 'flex',
       flexDirection: isMobile ? 'column' : 'row',
@@ -1251,51 +1201,6 @@ export default function Appointment() {
       padding: isMobile ? '4px 0' : '0',
       fontFamily: 'Open Sans',
     },
-    newsletterForm: {
-      display: 'flex',
-      flexDirection: isMobile ? 'column' : 'row',
-      gap: isMobile ? '8px' : '10px',
-      marginTop: isMobile ? '10px' : '15px',
-      width: '100%',
-    },
-    newsletterInput: {
-      flex: 1,
-      padding: isMobile ? '10px 12px' : '12px 16px',
-      fontSize: isMobile ? '13px' : '15px',
-      border: `1px solid ${colors.gray[700]}`,
-      borderRadius: '6px',
-      backgroundColor: 'transparent',
-      color: colors.white,
-      outline: 'none',
-      transition: 'all 0.3s ease',
-      width: isMobile ? '100%' : 'auto',
-      textAlign: isMobile ? 'center' : 'left',
-      fontFamily: 'Open Sans',
-    },
-    newsletterButton: {
-      padding: isMobile ? '10px 16px' : '12px 24px',
-      backgroundColor: colors.primary[600],
-      color: colors.white,
-      border: 'none',
-      borderRadius: '6px',
-      fontSize: isMobile ? '13px' : '15px',
-      fontWeight: '600',
-      cursor: 'pointer',
-      transition: 'all 0.3s ease',
-      whiteSpace: 'nowrap',
-      width: isMobile ? '100%' : 'auto',
-      fontFamily: 'Open Sans',
-    },
-  };
-
-  // Custom style for footer logo (reusing header logo style with white text)
-  const footerLogoStyle = {
-    ...styles.logo,
-    WebkitTextFillColor: colors.white,
-    background: 'none',
-    color: colors.white,
-    marginBottom: '16px',
-    fontFamily: 'Open Sans',
   };
 
   const features = [
@@ -1323,7 +1228,7 @@ export default function Appointment() {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: colors.gray[50], fontFamily: 'Open Sans' }}>
-      {/* FIXED HEADER WITH NAVIGATION */}
+      {/* FIXED HEADER WITH NAVIGATION - WHITE BACKGROUND */}
       <header style={styles.header}>
         <div style={styles.headerContainer}>
           <div style={styles.logo} onClick={() => handleNavigation('/')}>
@@ -1337,14 +1242,14 @@ export default function Appointment() {
               onClick={() => handleNavigation('/')}
               onMouseEnter={(e) => {
                 if (window.location.pathname !== '/') {
-                  e.target.style.backgroundColor = 'rgba(255,255,255,0.1)';
-                  e.target.style.color = colors.white;
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.05)';
+                  e.target.style.color = '#0f172a';
                 }
               }}
               onMouseLeave={(e) => {
                 if (window.location.pathname !== '/') {
                   e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = colors.white;
+                  e.target.style.color = '#0f172a';
                 }
               }}
             >
@@ -1355,14 +1260,14 @@ export default function Appointment() {
               onClick={() => handleNavigation('/about')}
               onMouseEnter={(e) => {
                 if (window.location.pathname !== '/about') {
-                  e.target.style.backgroundColor = 'rgba(255,255,255,0.1)';
-                  e.target.style.color = colors.white;
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.05)';
+                  e.target.style.color = '#0f172a';
                 }
               }}
               onMouseLeave={(e) => {
                 if (window.location.pathname !== '/about') {
                   e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = colors.white;
+                  e.target.style.color = '#0f172a';
                 }
               }}
             >
@@ -1373,14 +1278,14 @@ export default function Appointment() {
               onClick={() => handleNavigation('/contact')}
               onMouseEnter={(e) => {
                 if (window.location.pathname !== '/contact') {
-                  e.target.style.backgroundColor = 'rgba(255,255,255,0.1)';
-                  e.target.style.color = colors.white;
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.05)';
+                  e.target.style.color = '#0f172a';
                 }
               }}
               onMouseLeave={(e) => {
                 if (window.location.pathname !== '/contact') {
                   e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = colors.white;
+                  e.target.style.color = '#0f172a';
                 }
               }}
             >
@@ -1391,14 +1296,14 @@ export default function Appointment() {
               onClick={() => handleNavigation('/services')}
               onMouseEnter={(e) => {
                 if (window.location.pathname !== '/services') {
-                  e.target.style.backgroundColor = 'rgba(255,255,255,0.1)';
-                  e.target.style.color = colors.white;
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.05)';
+                  e.target.style.color = '#0f172a';
                 }
               }}
               onMouseLeave={(e) => {
                 if (window.location.pathname !== '/services') {
                   e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = colors.white;
+                  e.target.style.color = '#0f172a';
                 }
               }}
             >
@@ -1409,33 +1314,32 @@ export default function Appointment() {
               onClick={() => handleNavigation('/project')}
               onMouseEnter={(e) => {
                 if (window.location.pathname !== '/project') {
-                  e.target.style.backgroundColor = 'rgba(255,255,255,0.1)';
-                  e.target.style.color = colors.white;
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.05)';
+                  e.target.style.color = '#0f172a';
                 }
               }}
               onMouseLeave={(e) => {
                 if (window.location.pathname !== '/project') {
                   e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = colors.white;
+                  e.target.style.color = '#0f172a';
                 }
               }}
             >
               Projects
             </button>
-
             <button
               style={{ ...styles.navLink, ...(window.location.pathname === '/appointment' ? styles.navLinkActive : {}) }}
               onClick={() => handleNavigation('/appointment')}
               onMouseEnter={(e) => {
                 if (window.location.pathname !== '/appointment') {
-                  e.target.style.backgroundColor = 'rgba(255,255,255,0.1)';
-                  e.target.style.color = colors.white;
+                  e.target.style.backgroundColor = 'rgba(15, 23, 42, 0.05)';
+                  e.target.style.color = '#0f172a';
                 }
               }}
               onMouseLeave={(e) => {
                 if (window.location.pathname !== '/appointment') {
                   e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = colors.white;
+                  e.target.style.color = '#0f172a';
                 }
               }}
             >
@@ -1628,7 +1532,6 @@ export default function Appointment() {
                     }}
                   />
 
-                  {/* Email Suggestions for .com domains */}
                   {formData.email && !formData.email.includes('@') && formData.email.length > 2 && (
                     <div style={styles.emailHint}>
                       <span style={{ width: '100%', marginBottom: '4px' }}>Suggested .com emails:</span>
@@ -1670,7 +1573,6 @@ export default function Appointment() {
                     </div>
                   )}
 
-                  {/* Show hint about .com requirement */}
                   {formData.email && formData.email.includes('@') && !formData.email.toLowerCase().endsWith('.com') && (
                     <div style={{ ...styles.hintText, color: colors.error }}>
                       <span>ℹ️</span> Only .com email addresses are accepted (e.g., name@gmail.com)
@@ -1931,15 +1833,13 @@ export default function Appointment() {
       <footer style={styles.footer}>
         <div style={styles.footerContainer}>
           <div style={styles.footerGrid}>
-            {/* Column 1: Logo & Description */}
             <div style={styles.footerSection}>
-              <div style={footerLogoStyle}>ARCTITECH</div>
+              <div style={{ ...styles.logo, background: "linear-gradient(135deg, #fff 0%, #94a3b8 100%)", WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>ARCTITECH</div>
               <p style={styles.footerText}>
                 Creating timeless architecture that inspires and transforms.
               </p>
             </div>
 
-            {/* Column 2: Quick Links */}
             <div style={styles.footerSection}>
               <h4 style={styles.footerTitle}>Quick Links</h4>
               <div style={styles.footerLinks}>
@@ -1952,24 +1852,21 @@ export default function Appointment() {
               </div>
             </div>
 
-            {/* Column 3: Legal */}
             <div style={styles.footerSection}>
               <h4 style={styles.footerTitle}>Legal</h4>
               <div style={styles.footerLinks}>
                 <Link to="/PrivacyPolicy" style={styles.footerLink}>Privacy Policy</Link>
-                <Link to="/TermsCondition" style={styles.footerLink}>Terms of Service</Link>
+                <Link to="/TearmsCondition" style={styles.footerLink}>Terms of Service</Link>
               </div>
             </div>
 
-            {/* Column 4: Contact */}
             <div style={styles.footerSection}>
               <h4 style={styles.footerTitle}>Contact</h4>
-              <p style={styles.footerText}>contact@arctitech.com</p>
-              <p style={styles.footerText}>+1 (555) 123-4567</p>
+              <p style={styles.footerText}>consult@arctitech.com</p>
+              <p style={styles.footerText}>+91 98765 43210</p>
             </div>
           </div>
 
-          {/* Bottom Bar */}
           <div style={styles.footerBottom}>
             <span>© {new Date().getFullYear()} ARCTITECH. All rights reserved.</span>
             <div style={styles.footerBottomLinks}>
@@ -2028,12 +1925,6 @@ export default function Appointment() {
             transform: translateY(0);
           }
 
-          @media (max-width: 480px) {
-            .time-slot-grid {
-              grid-template-columns: 1fr !important;
-            }
-          }
-
           @media (max-width: 768px) {
             button, input, select, textarea, [role="button"] {
               min-height: 44px;
@@ -2063,15 +1954,6 @@ export default function Appointment() {
 
           ::-webkit-scrollbar-thumb:hover {
             background: ${colors.primary[600]};
-          }
-
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-
-          .loading-spinner {
-            animation: spin 1s linear infinite;
           }
         `}
       </style>

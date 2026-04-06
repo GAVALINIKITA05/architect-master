@@ -69,7 +69,7 @@ const Service = () => {
       icon: "🏛️",
       category: "design",
       features: ["Concept Development", "Schematic Design", "Construction Documents", "Permitting"],
-      color: "#0284c7"
+      color: "#12086F"
     },
     {
       id: 2,
@@ -78,7 +78,7 @@ const Service = () => {
       icon: "🪑",
       category: "design",
       features: ["Space Planning", "Material Selection", "Furniture Design", "Lighting Design"],
-      color: "#8b5cf6"
+      color: "#12086F"
     },
     {
       id: 3,
@@ -87,7 +87,7 @@ const Service = () => {
       icon: "🏙️",
       category: "planning",
       features: ["Master Planning", "Zoning Analysis", "Public Spaces", "Infrastructure"],
-      color: "#10b981"
+      color: "#12086F"
     },
     {
       id: 4,
@@ -96,7 +96,7 @@ const Service = () => {
       icon: "🎨",
       category: "visualization",
       features: ["3D Modeling", "Virtual Tours", "Photorealistic Rendering", "Animation"],
-      color: "#f59e0b"
+      color: "#12086F"
     },
     {
       id: 5,
@@ -105,7 +105,7 @@ const Service = () => {
       icon: "📋",
       category: "management",
       features: ["Budget Control", "Timeline Management", "Quality Assurance", "Vendor Coordination"],
-      color: "#ef4444"
+      color: "#12086F"
     },
     {
       id: 6,
@@ -114,7 +114,7 @@ const Service = () => {
       icon: "🔨",
       category: "renovation",
       features: ["Structural Changes", "Modern Upgrades", "Historical Restoration", "Space Optimization"],
-      color: "#ec4899"
+      color: "#12086F"
     },
     {
       id: 7,
@@ -123,7 +123,7 @@ const Service = () => {
       icon: "🌿",
       category: "design",
       features: ["Green Building", "Energy Efficiency", "LEED Certification", "Renewable Materials"],
-      color: "#14b8a6"
+      color: "#12086F"
     },
     {
       id: 8,
@@ -132,7 +132,7 @@ const Service = () => {
       icon: "🌳",
       category: "planning",
       features: ["Garden Design", "Hardscaping", "Outdoor Living", "Native Planting"],
-      color: "#84cc16"
+      color: "#12086F"
     },
     {
       id: 9,
@@ -141,7 +141,7 @@ const Service = () => {
       icon: "💡",
       category: "consulting",
       features: ["Feasibility Studies", "Code Compliance", "Cost Estimation", "Site Analysis"],
-      color: "#6366f1"
+      color: "#12086F"
     }
   ];
 
@@ -168,7 +168,7 @@ const Service = () => {
       overflowX: "hidden"
     },
 
-    /* ---------- NAVBAR (Fixed Header) ---------- */
+    /* ---------- NAVBAR (Fixed Header - WHITE BACKGROUND) ---------- */
     navbar: {
       position: "fixed",
       top: 0,
@@ -181,21 +181,21 @@ const Service = () => {
         ? isMobile ? "12px 5%" : "12px 8%"
         : isMobile ? "15px 5%" : "18px 8%",
       background: scrolled 
-        ? "rgba(15, 23, 42, 0.95)" 
-        : "linear-gradient(to bottom, rgba(0,0,0,0.8), transparent)",
+        ? "rgba(255, 255, 255, 0.98)" // White background with high opacity
+        : "rgba(255, 255, 255, 0.95)", // White background
       backdropFilter: scrolled ? "blur(12px)" : "blur(4px)",
-      boxShadow: scrolled ? "0 10px 30px rgba(0,0,0,0.1)" : "none",
+      boxShadow: scrolled ? "0 10px 30px rgba(0,0,0,0.1)" : "0 4px 15px rgba(0,0,0,0.05)",
       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-      borderBottom: scrolled ? "1px solid rgba(255,255,255,0.1)" : "none",
+      borderBottom: scrolled ? "1px solid rgba(0,0,0,0.1)" : "1px solid rgba(0,0,0,0.08)",
     },
 
     logo: {
       fontSize: isMobile ? "22px" : "28px",
       fontWeight: "600",
-      color: "#fff",
+      color: "#141517", // Dark color for white background
       letterSpacing: "1px",
       cursor: "pointer",
-      background: "linear-gradient(135deg, #fff 0%, #e2e8f0 100%)",
+      background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
       transition: "0.3s",
@@ -204,38 +204,51 @@ const Service = () => {
 
     /* ---------- MOBILE MENU BUTTON (Three Lines) ---------- */
     menuButton: {
-      display: isMobile ? "block" : "none",
+      display: isMobile ? "flex" : "none",
       background: "transparent",
       border: "none",
       cursor: "pointer",
       zIndex: 1001,
       padding: "10px",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "44px",
+      height: "44px",
     },
 
-    menuIcon: {
+    menuBar: {
       width: "24px",
       height: "2px",
-      background: "#fff",
-      margin: "5px 0",
-      transition: "0.3s",
+      background: "#12086F", // Dark color for white background
+      margin: "3px 0",
+      transition: "all 0.3s ease",
+    },
+
+    menuBar1: {
+      width: "24px",
+      height: "2px",
+      background: "#0f172a",
+      margin: "3px 0",
+      transition: "all 0.3s ease",
       transform: mobileMenuOpen ? "rotate(45deg) translate(5px, 5px)" : "none",
     },
 
-    menuIcon2: {
+    menuBar2: {
       width: "24px",
       height: "2px",
-      background: "#fff",
-      margin: "5px 0",
-      transition: "0.3s",
+      background: "#0f172a",
+      margin: "3px 0",
+      transition: "all 0.3s ease",
       opacity: mobileMenuOpen ? 0 : 1,
     },
 
-    menuIcon3: {
+    menuBar3: {
       width: "24px",
       height: "2px",
-      background: "#fff",
-      margin: "5px 0",
-      transition: "0.3s",
+      background: "#0f172a",
+      margin: "3px 0",
+      transition: "all 0.3s ease",
       transform: mobileMenuOpen ? "rotate(-45deg) translate(7px, -7px)" : "none",
     },
 
@@ -248,7 +261,7 @@ const Service = () => {
       left: isMobile ? 0 : "auto",
       width: isMobile ? "100%" : "auto",
       height: isMobile ? "100vh" : "auto",
-      background: isMobile ? "rgba(15, 23, 42, 0.98)" : "transparent",
+      background: isMobile ? "rgba(255, 255, 255, 0.98)" : "transparent", // White background for mobile menu
       backdropFilter: isMobile ? "blur(10px)" : "none",
       padding: isMobile ? "80px 20px 40px" : "0",
       alignItems: isMobile ? "center" : "center",
@@ -261,7 +274,7 @@ const Service = () => {
 
     tabItem: {
       padding: isMobile ? "12px 30px" : "8px 20px",
-      color: "rgba(255,255,255,0.7)",
+      color: "rgba(15, 23, 42, 0.7)", // Dark color for white background
       fontSize: isMobile ? "18px" : "15px",
       fontWeight: "600",
       cursor: "pointer",
@@ -274,7 +287,7 @@ const Service = () => {
     },
 
     activeTabItem: {
-      background: "linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)",
+      background: "#12086F",
       color: "#fff",
       boxShadow: "0 10px 25px rgba(56, 189, 248, 0.3)",
     },
@@ -378,7 +391,7 @@ const Service = () => {
     },
 
     activeFilterButton: {
-      background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
+      background: "#12086F",
       color: "#ffffff",
       border: "none",
       boxShadow: "0 10px 25px rgba(56, 189, 248, 0.3)"
@@ -438,7 +451,7 @@ const Service = () => {
       fontSize: isMobile ? "22px" : "24px",
       fontWeight: "700",
       marginBottom: "12px",
-      color: "#0f172a",
+      color: "#12086F",
       lineHeight: "1.3"
     },
 
@@ -469,7 +482,7 @@ const Service = () => {
 
     cardFooter: {
       display: "flex",
-      justifyContent: "flex-end",  // Align category tag to the right
+      justifyContent: "flex-end",
       alignItems: "center",
       marginTop: isMobile ? "24px" : "32px",
       paddingTop: isMobile ? "20px" : "24px",
@@ -487,12 +500,12 @@ const Service = () => {
       fontWeight: "700",
       textAlign: "center",
       marginBottom: "16px",
-      color: "#0f172a"
+      color: "#12086F"
     },
 
     processSubtitle: {
       fontSize: isMobile ? "16px" : "18px",
-      color: "#64748b",
+      color: "#171719",
       textAlign: "center",
       maxWidth: "600px",
       margin: "0 auto 40px",
@@ -543,7 +556,7 @@ const Service = () => {
       fontSize: isMobile ? "18px" : "20px",
       fontWeight: "700",
       marginBottom: "10px",
-      color: "#0f172a"
+      color: "#12087F"
     },
 
     processStepDesc: {
@@ -555,22 +568,22 @@ const Service = () => {
     /* ---------- CTA SECTION ---------- */
     ctaSection: {
       padding: isMobile ? "60px 5%" : isTablet ? "80px 6%" : "100px 8%",
-      background: "linear-gradient(135deg, #858587 0%, #8e8e8f 100%)",
-      color: "#fff",
+      // background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
+      color: "#12086F",
       textAlign: "center"
     },
 
     ctaTitle: {
       fontSize: isMobile ? "28px" : isTablet ? "36px" : "clamp(32px, 5vw, 44px)",
-      fontWeight: "700",
+      fontWeight: "600",
       marginBottom: "16px",
       lineHeight: "1.3"
     },
 
     ctaBtn: {
       padding: isMobile ? "14px 32px" : "18px 48px",
-      background: "linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)",
-      color: "#fff",
+      background: "#bcbbbb",
+      color: "#262424",
       border: "none",
       borderRadius: "50px",
       fontSize: isMobile ? "15px" : "16px",
@@ -583,8 +596,8 @@ const Service = () => {
 
     /* ---------- FOOTER ---------- */
     footer: {
-      background: "#0f172a",
-      color: "#fff",
+      background: "#e9ebec",
+      color: "#0f0f0f",
       padding: isMobile ? "40px 5% 20px" : "60px 8% 30px"
     },
 
@@ -606,13 +619,13 @@ const Service = () => {
       fontSize: isMobile ? "24px" : "28px",
       fontWeight: "800",
       marginBottom: "15px",
-      background: "linear-gradient(135deg, #fff 0%, #94a3b8 100%)",
+      background: "linear-gradient(135deg, #424040 0%, #49494b 100%)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent"
     },
 
     footerLink: {
-      color: "rgba(255,255,255,0.7)",
+      color: "rgba(12, 11, 11, 0.7)",
       textDecoration: "none",
       display: "block",
       marginBottom: isMobile ? "8px" : "12px",
@@ -624,7 +637,7 @@ const Service = () => {
       textAlign: "center",
       paddingTop: "30px",
       borderTop: "1px solid rgba(255,255,255,0.1)",
-      color: "rgba(255,255,255,0.6)",
+      color: "rgba(10, 9, 9, 0.6)",
       maxWidth: "1200px",
       margin: "0 auto",
       fontSize: isMobile ? "13px" : "15px"
@@ -666,7 +679,7 @@ const Service = () => {
 
   return (
     <div style={styles.page}>
-      {/* FIXED HEADER WITH NAVIGATION */}
+      {/* FIXED HEADER WITH NAVIGATION - WHITE BACKGROUND */}
       <nav style={styles.navbar}>
         <div style={styles.logo} onClick={() => navigate("/")}>
           ARCTITECH
@@ -678,9 +691,9 @@ const Service = () => {
           className="menu-button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          <div style={styles.menuIcon}></div>
-          <div style={styles.menuIcon2}></div>
-          <div style={styles.menuIcon3}></div>
+          <div style={mobileMenuOpen ? styles.menuBar1 : styles.menuBar}></div>
+          <div style={mobileMenuOpen ? styles.menuBar2 : styles.menuBar}></div>
+          <div style={mobileMenuOpen ? styles.menuBar3 : styles.menuBar}></div>
         </button>
 
         {/* Navigation Menu */}
@@ -696,14 +709,14 @@ const Service = () => {
               onClick={() => isMobile && setMobileMenuOpen(false)}
               onMouseEnter={(e) => {
                 if (!isMobile && window.location.pathname !== item.path) {
-                  e.target.style.background = "rgba(255,255,255,0.1)";
-                  e.target.style.color = "#fff";
+                  e.target.style.background = "rgba(15, 23, 42, 0.05)";
+                  e.target.style.color = "#0f172a";
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isMobile && window.location.pathname !== item.path) {
                   e.target.style.background = "transparent";
-                  e.target.style.color = "rgba(255,255,255,0.7)";
+                  e.target.style.color = "rgba(15, 23, 42, 0.7)";
                 }
               }}
             >
@@ -876,29 +889,29 @@ const Service = () => {
         <div style={styles.footerContent}>
           <div>
             <div style={styles.footerLogo}>ARCTITECH</div>
-            <p style={{ color: "rgba(255,255,255,0.7)", lineHeight: "1.7", fontSize: isMobile ? "14px" : "16px" }}>
+            <p style={{ color: "rgba(11, 11, 11, 0.7)", lineHeight: "1.7", fontSize: isMobile ? "20px" : "18px" }}>
               Creating timeless architecture that inspires and transforms.
             </p>
           </div>
          
           <div>
-            <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Quick Links</h4>
+            <h4 style={{ color: "#151515", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Quick Links</h4>
             <Link to="/about" style={styles.footerLink}>About Us</Link>
             <Link to="/project" style={styles.footerLink}>Projects</Link>
             <Link to="/contact" style={styles.footerLink}>Contact</Link>
             <Link to="/appointment" style={styles.footerLink}>Appointment</Link>
           </div>
-           <div>
-          <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Legal</h4>
-                      <Link to="/PrivacyPolicy" style={styles.footerLink}>Privacy Policy</Link>
-                      <Link to="/TearmsCondition" style={styles.footerLink}>Terms of Service</Link>
-                    </div>
           <div>
-            <h4 style={{ color: "#fff", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Contact</h4>
-            <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: "10px", fontSize: isMobile ? "14px" : "16px" }}>
+            <h4 style={{ color: "#0c0b0b", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Legal</h4>
+            <Link to="/PrivacyPolicy" style={styles.footerLink}>Privacy Policy</Link>
+            <Link to="/TearmsCondition" style={styles.footerLink}>Terms of Service</Link>
+          </div>
+          <div>
+            <h4 style={{ color: "#101010", marginBottom: isMobile ? "15px" : "24px", fontSize: isMobile ? "18px" : "20px" }}>Contact</h4>
+            <p style={{ color: "rgba(28, 26, 26, 0.7)", marginBottom: "10px", fontSize: isMobile ? "14px" : "16px" }}>
               contact@arctitech.com
             </p>
-            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: isMobile ? "14px" : "16px" }}>+1 (555) 123-4567</p>
+            <p style={{ color: "rgba(22, 21, 21, 0.7)", fontSize: isMobile ? "14px" : "16px" }}>+91 98765 43210</p>
           </div>
         </div>
         <div style={styles.copyright}>
@@ -906,52 +919,7 @@ const Service = () => {
         </div>
       </footer>
 
-      {/* Global Styles */}
-      <style>
-        {`
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-
-          body {
-            overflow-x: hidden;
-            padding-top: ${isMobile ? '70px' : '80px'};
-          }
-
-          a {
-            text-decoration: none;
-          }
-
-          button {
-            outline: none;
-            cursor: pointer;
-            border: none;
-          }
-
-          div[style*="card"]:hover .service-icon {
-            transform: scale(1.1);
-          }
-
-          @media (max-width: 768px) {
-            div[style*="card"]:hover .service-icon {
-              transform: none;
-            }
-          }
-        `}
-      </style>
+      
     </div>
   );
 };

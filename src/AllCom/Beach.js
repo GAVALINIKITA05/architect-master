@@ -113,12 +113,43 @@ const Beach = () => {
       textAlign: "center",
     },
 
+    // Footer Styles
     footer: {
-      backgroundColor: "#0f172a",
-      color: "#fff",
-      textAlign: "center",
-      padding: "30px",
+      backgroundColor: "#e9ebec",
+      color: "#0f0d0d",
+      padding: "60px 10% 30px",
       marginTop: "60px",
+    },
+
+    footerContent: {
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+      gap: "40px",
+      marginBottom: "40px",
+    },
+
+    footerLogo: {
+      fontSize: "28px",
+      fontWeight: "bold",
+      marginBottom: "20px",
+      color: "#1c1b1b",
+    },
+
+    footerLink: {
+      display: "block",
+      color: "rgba(28, 26, 26, 0.7)",
+      textDecoration: "none",
+      marginBottom: "12px",
+      transition: "color 0.3s ease",
+      cursor: "pointer",
+    },
+
+    copyright: {
+      textAlign: "center",
+      paddingTop: "30px",
+      borderTop: "1px solid rgba(255,255,255,0.1)",
+      color: "rgba(14, 13, 13, 0.6)",
+      fontSize: "14px",
     },
   };
 
@@ -196,14 +227,48 @@ const Beach = () => {
             <div style={styles.card}>Power Backup</div>
           </div>
         </div>
-
-        
       </div>
 
       {/* Footer */}
-      <div style={styles.footer}>
-        © 2026 Beach Apartment Project | Coastal Luxury Living
-      </div>
+      <footer style={styles.footer}>
+        <div style={styles.footerContent}>
+          <div>
+            <div style={styles.footerLogo}>ARCTITECH</div>
+            <p style={{ color: "rgba(24, 23, 23, 0.7)", lineHeight: "1.7" }}>
+              Creating timeless architecture that inspires and transforms.
+            </p>
+          </div>
+          <div>
+            <h4 style={{ color: "#151414", marginBottom: "24px" }}>Quick Links</h4>
+            <a href="/" style={styles.footerLink}>Home</a>
+            <a href="/project" style={styles.footerLink}>Projects</a>
+            <a href="/services" style={styles.footerLink}>Services</a>
+            <a href="/contact" style={styles.footerLink}>Contact</a>
+          </div>
+          <div>
+            <h4 style={{ color: "#141313", marginBottom: "24px" }}>Project Info</h4>
+            <a href="/1bhk" style={styles.footerLink}>1BHK Apartment</a>
+            <a href="/luxury" style={styles.footerLink}>Luxury Apartment</a>
+            <a href="/office" style={styles.footerLink}>Office Space</a>
+            <a href="/beach" style={styles.footerLink}>Beach Apartment</a>
+          </div>
+          <div>
+            <h4 style={{ color: "#1d1b1b", marginBottom: "24px" }}>Contact</h4>
+            <p style={{ color: "rgba(11, 10, 10, 0.7)", marginBottom: "12px" }}>
+              Pune, Maharashtra
+            </p>
+            <p style={{ color: "rgba(20, 18, 18, 0.7)", marginBottom: "12px" }}>
+              +91 98765 43210
+            </p>
+            <p style={{ color: "rgba(14, 13, 13, 0.7)" }}>
+              projects@arctitech.com
+            </p>
+          </div>
+        </div>
+        <div style={styles.copyright}>
+          © {new Date().getFullYear()} Beach Apartment Project | Coastal Luxury Living
+        </div>
+      </footer>
     </div>
   );
 };

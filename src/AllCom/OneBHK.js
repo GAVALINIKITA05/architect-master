@@ -571,8 +571,8 @@ const OneBHK = () => {
 
     /* ---------- FOOTER ---------- */
     footer: {
-      background: "#0f172a",
-      color: "#fff",
+      background: "#e9ebec",
+      color: "#0d0c0c",
       padding: "60px 8% 30px"
     },
 
@@ -589,13 +589,13 @@ const OneBHK = () => {
       fontSize: "28px",
       fontWeight: "600",
       marginBottom: "20px",
-      background: "linear-gradient(135deg, #fff 0%, #94a3b8 100%)",
+      background: "linear-gradient(135deg, #080808 0%, #0a0a0b 100%)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent"
     },
 
     footerLink: {
-      color: "rgba(255,255,255,0.7)",
+      color: "rgba(6, 5, 5, 0.7)",
       textDecoration: "none",
       display: "block",
       marginBottom: "12px",
@@ -606,7 +606,7 @@ const OneBHK = () => {
       textAlign: "center",
       paddingTop: "30px",
       borderTop: "1px solid rgba(255,255,255,0.1)",
-      color: "rgba(255,255,255,0.6)",
+      color: "rgba(16, 15, 15, 0.6)",
       maxWidth: "1200px",
       margin: "0 auto"
     }
@@ -994,33 +994,33 @@ const OneBHK = () => {
         <div style={styles.footerContent}>
           <div>
             <div style={styles.footerLogo}>ARCTITECH</div>
-            <p style={{ color: "rgba(255,255,255,0.7)", lineHeight: "1.7" }}>
+            <p style={{ color: "rgba(26, 26, 26, 0.7)", lineHeight: "1.7" }}>
               Creating timeless architecture that inspires and transforms.
             </p>
           </div>
           <div>
-            <h4 style={{ color: "#fff", marginBottom: "24px" }}>Quick Links</h4>
+            <h4 style={{ color: "#0f0f0f", marginBottom: "24px" }}>Quick Links</h4>
             <a href="/" style={styles.footerLink}>Home</a>
             <a href="/project" style={styles.footerLink}>Projects</a>
             <a href="/services" style={styles.footerLink}>Services</a>
             <a href="/contact" style={styles.footerLink}>Contact</a>
           </div>
           <div>
-            <h4 style={{ color: "#fff", marginBottom: "24px" }}>Project Info</h4>
+            <h4 style={{ color: "#0f0e0e", marginBottom: "24px" }}>Project Info</h4>
             <a href="/1bhk" style={styles.footerLink}>1BHK Apartment</a>
             <a href="/luxury" style={styles.footerLink}>Luxury Apartment</a>
             <a href="/office" style={styles.footerLink}>Office Space</a>
             <a href="/beach" style={styles.footerLink}>Beach Apartment</a>
           </div>
           <div>
-            <h4 style={{ color: "#fff", marginBottom: "24px" }}>Contact</h4>
-            <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: "12px" }}>
+            <h4 style={{ color: "#0f0e0e", marginBottom: "24px" }}>Contact</h4>
+            <p style={{ color: "rgba(24, 24, 24, 0.7)", marginBottom: "12px" }}>
               Pune, Maharashtra
             </p>
             <p style={{ color: "rgba(255,255,255,0.7", marginBottom: "12px" }}>
               +91 98765 43210
             </p>
-            <p style={{ color: "rgba(255,255,255,0.7)" }}>
+            <p style={{ color: "rgba(21, 20, 20, 0.7)" }}>
               projects@arctitech.com
             </p>
           </div>
@@ -1030,54 +1030,7 @@ const OneBHK = () => {
         </div>
       </footer>
 
-      {/* Global Styles */}
-      <style>
-        {`
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-
-          body {
-            overflow-x: hidden;
-          }
-
-          a {
-            text-decoration: none;
-          }
-
-          button {
-            outline: none;
-            border: none;
-            cursor: pointer;
-          }
-
-          .gallery-overlay {
-            opacity: 0;
-          }
-        `}
-      </style>
+     
     </div>
   );
 };
